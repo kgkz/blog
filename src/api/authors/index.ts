@@ -1,4 +1,4 @@
-import { Headers, Query } from '../../types/apiRequest'
+import { Query } from '../../types/apiRequest'
 import { Author, MetaData } from '../../types/apiResponse'
 
 export type Methods = {
@@ -7,6 +7,5 @@ export type Methods = {
       contents: Author[]
     }
     query?: Query
-    reqHeaders: Headers
   }
 }
