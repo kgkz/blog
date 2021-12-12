@@ -1,7 +1,3 @@
-export type Headers = {
-  'X-API-KEY': string
-}
-
 export type Query = {
   draftKey?: string
   limit?: number

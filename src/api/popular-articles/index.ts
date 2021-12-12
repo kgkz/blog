@@ -1,4 +1,4 @@
-import { Headers, Query } from '../../types/apiRequest'
+import { Query } from '../../types/apiRequest'
 import { Blog, MetaData } from '../../types/apiResponse'
 
 export type Methods = {
@@ -7,6 +7,5 @@ export type Methods = {
       articles: Blog[]
     }
     query?: Query
-    reqHeaders: Headers
   }
 }
