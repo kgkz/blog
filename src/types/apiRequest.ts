@@ -5,7 +5,7 @@ export type Query = {
   orders?: string
   q?: string
   fields?: string
-  ids?: string
+  ids?: string[] | string | undefined
   filters?: string
   depth?: 1 | 2 | 3
 }
