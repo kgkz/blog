@@ -9,7 +9,7 @@ import {
 } from '@mui/material'
 import { Blog } from '../src/types/apiResponse'
 
-interface MainProps {
+type MainProps = {
   title: string
   contents: Blog[]
 }
