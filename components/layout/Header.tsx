@@ -5,7 +5,7 @@ import { Search } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import Link from '@mui/material/Link'
 
-interface HeaderProps {
+type HeaderProps = {
   title: string
   sections: ReadonlyArray<{
     title: string
