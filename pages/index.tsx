@@ -1,14 +1,15 @@
 import type { GetStaticProps, NextPage } from 'next'
-import Head from 'next/head'
-import Image from 'next/image'
-import Link from 'next/link'
-import Container from '@mui/material/Container'
-import Grid from '@mui/material/Grid'
+import { Container, Grid } from '@mui/material'
 
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import Main from '../components/Main'
-import styles from '../src/styles/Home.module.css'
+import { Blog } from '../src/types/apiResponse'
+import { apiClient } from '../src/lib/api-client'
+
+interface Props {
+  contents: Blog[]
+}
 
 const sections = [
   {
@@ -21,13 +22,23 @@ const sections = [
   },
 ]
 
-const Home: NextPage = props => {
+export const getStaticProps: GetStaticProps = async () => {
+  const data = await apiClient.blog.$get()
+  return {
+    props: { ...data },
+  }
+}
+
+const Home: NextPage<Props> = props => {
+  const { contents } = props
   return (
     <>
       <Container maxWidth="lg">
         <Header title="kgkz" sections={sections} />
         <main>
-          <Grid></Grid>
+          <Grid container spacing={4}>
+            <Main title="my posts" contents={contents} />
+          </Grid>
         </main>
       </Container>
       <Footer title="atodenanikakaku" description="syousaihakotira" />
