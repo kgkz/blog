@@ -3,9 +3,9 @@ import { ReactElement } from 'react'
 import Header from './Header'
 import Footer from './Footer'
 
-type LayoutProps = Required<{
+type LayoutProps = {
   readonly children: ReactElement
-}>
+}
 
 const sections = [
   {
