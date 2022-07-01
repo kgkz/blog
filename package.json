@@ -29,6 +29,7 @@
     "@mui/icons-material": "^5.8.3",
     "@mui/material": "^5.8.3",
     "axios": "^0.23.0",
+    "dayjs": "^1.11.3",
     "framer-motion": "^4",
     "next": "11.1.2",
     "react": "17.0.2",
