@@ -1,12 +1,11 @@
-import { ReactElement } from 'react'
 import { GetStaticPaths, GetStaticProps } from 'next'
-import ReactMarkdown from 'markdown-to-jsx'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import Box from '@mui/material/Box'
 
 import { apiClient } from '../../src/lib/api-client'
 import { Blog } from '../../src/types/apiResponse'
+import Markdown from '../../components/Markdown'
 
 type ArticleDetailProps = {
   blog?: Blog
@@ -80,5 +79,5 @@ function MarkdownListItem(props: any) {
 
 export default function ArticleDetail({ blog }: ArticleDetailProps) {
   if (!blog) return
-  return <ReactMarkdown options={options}>{blog.body}</ReactMarkdown>
+  return <Markdown markdown={blog.body} />
 }
