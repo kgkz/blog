@@ -19,7 +19,11 @@ export default function Markdown(props: MarkdownProps) {
                 {String(children).replace(/\n$/, '')}
               </SyntaxHighlighter>
             ) : (
-              <code className={className} {...props}>
+              <code
+                className={className}
+                style={{ background: '#9E9E9E', color: '#EF5350', padding: 3 }}
+                {...props}
+              >
                 {children}
               </code>
             )
