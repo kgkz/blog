@@ -11,7 +11,7 @@ type ArticleDetailProps = {
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await apiClient.blog.$get()
+  const data = await apiClient.blog.$get({ query: { limit: 3000 } })
   const paths = data.contents.map(content => ({ params: { id: content.id } }))
 
   return {

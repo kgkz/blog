@@ -17,7 +17,7 @@ export default function Header(props: HeaderProps) {
   const { sections, title } = props
 
   return (
-    <header>
+    <Box component="header">
       <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
         <Typography
           component="h2"
@@ -47,6 +47,6 @@ export default function Header(props: HeaderProps) {
           </Link>
         ))}
       </Toolbar>
-    </header>
+    </Box>
   )
 }
