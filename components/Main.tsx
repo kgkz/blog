@@ -18,17 +18,6 @@ export default function Main(props: MainProps) {
   const { title, contents } = props
 
   return (
-    // <Grid item xs={12} md={8} sx={{}}>
-    //   <Typography variant="h6" gutterBottom>
-    //     {title}
-    //   </Typography>
-    //   <Divider />
-    //   <Grid>
-    //   {contents.map((content, index) => (
-    //     <Typography key={index}>{content.title}</Typography>
-    //   ))}
-    //   </Grid>
-    // </Grid>
     <>
       {contents.map((content, index) => {
         return (
