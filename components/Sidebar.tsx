@@ -6,6 +6,7 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import Box from '@mui/material/Box'
 import Link from '@mui/material/Link'
+import NextLink from 'next/link'
 
 import { groupByDate } from '../src/lib/utils'
 import { Blog } from '../src/types/apiResponse'
@@ -31,13 +32,13 @@ export default function Sidebar({ contents }: SidebarProps) {
         <List>
           {Array.from(monthlyIndex).map(([month, group], index) => {
             return (
-              <Link key={index} href={`/header/about`}>
+              <NextLink key={index} href={`/header/about`} passHref>
                 <ListItem>
                   <ListItemButton>
                     <ListItemText primary={`${month} (${group.length})`} />
                   </ListItemButton>
                 </ListItem>
-              </Link>
+              </NextLink>
             )
           })}
         </List>
