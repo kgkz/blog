@@ -1,14 +1,13 @@
 import { ReactElement } from 'react'
 import Grid from '@mui/material/Grid'
+import Container from '@mui/material/Container'
 
 import Header from './Header'
 import Footer from './Footer'
-import Sidebar from '../Sidebar'
-import { Blog } from '../../src/types/apiResponse'
+import { Box } from '@mui/material'
 
 type LayoutProps = {
   readonly children: ReactElement
-  contents: Blog[]
 }
 
 const sections = [
@@ -22,19 +21,12 @@ const sections = [
   },
 ]
 
-export default function Layout({ children, contents }: LayoutProps) {
+export default function Layout({ children }: LayoutProps) {
   return (
-    <>
+    <Container maxWidth="lg">
       <Header title="kgkz" sections={sections} />
-      <Grid container spacing={2}>
-        <Grid item xs={12} md={9}>
-          {children}
-        </Grid>
-        <Grid item xs={12} md={3}>
-          <Sidebar contents={contents} />
-        </Grid>
-      </Grid>
+      <Box sx={{ my: 5 }}>{children}</Box>
       <Footer title="hoge" description="fuga" />
-    </>
+    </Container>
   )
 }
