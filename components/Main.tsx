@@ -4,29 +4,26 @@ import { formatDate } from '../src/lib/utils'
 import { Blog } from '../src/types/apiResponse'
 
 type MainProps = {
-  title: string
-  contents: Blog[]
+  blogs: Blog[]
 }
 
-export default function Main(props: MainProps) {
-  const { title, contents } = props
-
+export default function Main({ blogs }: MainProps) {
   return (
     <>
-      {contents.map((content, index) => {
+      {blogs.map((blog, index) => {
         return (
           <Grid item key={index} xs={12} md={6}>
-            <NextLink href={`/posts/${content.id}`} passHref>
+            <NextLink href={`/posts/${blog.id}`} passHref>
               <CardActionArea component="a">
                 <Card sx={{ display: 'flex' }}>
                   <CardContent sx={{ flex: 1 }}>
                     <Typography component="h2" variant="h5">
-                      {content.title}
+                      {blog.title}
                     </Typography>
                     <Typography variant="subtitle1" color="text.secondary">
-                      {formatDate(content.updatedAt, 'YYYY/MM/DD')}
+                      {formatDate(blog.updatedAt, 'YYYY/MM/DD')}
                     </Typography>
-                    <Typography variant="subtitle1">{content.description}</Typography>
+                    <Typography variant="subtitle1">{blog.description}</Typography>
                     <Typography variant="subtitle1" color="primary">
                       Continue reading...
                     </Typography>
@@ -34,8 +31,8 @@ export default function Main(props: MainProps) {
                   <CardMedia
                     component="img"
                     sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-                    src={content.ogimage?.url}
-                    alt={content.description}
+                    src={blog.ogimage?.url}
+                    alt={blog.description}
                   />
                 </Card>
               </CardActionArea>

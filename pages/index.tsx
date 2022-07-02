@@ -8,20 +8,22 @@ import NestedLayout from '../components/layout/NestedLayout'
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 export const getStaticProps = async () => {
-  const data = await apiClient.blog.$get({
+  const blogs = await apiClient.blog.$get({
     query: { fields: 'id,title,updatedAt,description,ogimage,publishedAt', limit: 3000 },
   })
+  const categories = await apiClient.categories.$get()
+  const tags = await apiClient.tags.$get()
+
   return {
-    props: { ...data },
+    props: { blogs: blogs.contents, categories: categories.contents, tags: tags.contents },
   }
 }
 
-const Home: NextPage<Props> = props => {
-  const { contents } = props
+const Home: NextPage<Props> = ({ blogs, categories, tags }) => {
   return (
-    <NestedLayout contents={contents}>
+    <NestedLayout blogs={blogs} categories={categories} tags={tags}>
       <Grid container spacing={4}>
-        <Main title="my posts" contents={contents} />
+        <Main blogs={blogs} />
       </Grid>
     </NestedLayout>
   )

@@ -1,10 +1,10 @@
 import { Query } from '../../types/apiRequest'
-import { MetaData, Partner } from '../../types/apiResponse'
+import { MetaData, Tag } from '../../types/apiResponse'
 
 export type Methods = {
   get: {
     resBody: MetaData & {
-      contents: Partner[]
+      contents: Tag[]
     }
     query?: Query
   }
