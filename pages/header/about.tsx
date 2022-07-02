@@ -1,13 +1,25 @@
 import * as React from 'react'
 import { Typography } from '@mui/material'
-import Container from '@mui/material/Container'
+import { InferGetStaticPropsType } from 'next'
+import { apiClient } from '../../src/lib/api-client'
+import NestedLayout from '../../components/layout/NestedLayout'
 
-export default function about() {
+type Props = InferGetStaticPropsType<typeof getStaticProps>
+
+export const getStaticProps = async () => {
+  const data = await apiClient.blog.$get({
+    query: { fields: 'id,title,updatedAt,description,ogimage,publishedAt', limit: 3000 },
+  })
+
+  return {
+    props: { ...data },
+  }
+}
+
+export default function about({ contents }: Props) {
   return (
-    <>
-      <Container>
-        <Typography>about page</Typography>
-      </Container>
-    </>
+    <NestedLayout contents={contents}>
+      <Typography>about page</Typography>
+    </NestedLayout>
   )
 }

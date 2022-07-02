@@ -1,14 +1,11 @@
-import { GetStaticPaths, GetStaticProps } from 'next'
+import { GetStaticPaths, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import Box from '@mui/material/Grid'
 
 import { apiClient } from '../../src/lib/api-client'
-import { Blog } from '../../src/types/apiResponse'
 import Markdown from '../../components/Markdown'
+import NestedLayout from '../../components/layout/NestedLayout'
 
-type ArticleDetailProps = {
-  blog?: Blog
-  errors?: string
-}
+type ArticleDetailProps = InferGetStaticPropsType<typeof getStaticProps> & { errors?: string }
 
 export const getStaticPaths: GetStaticPaths = async () => {
   const data = await apiClient.blog.$get({ query: { limit: 3000 } })
@@ -20,11 +17,17 @@ export const getStaticPaths: GetStaticPaths = async () => {
   }
 }
 
-export const getStaticProps: GetStaticProps = async ({ params }) => {
+export const getStaticProps = async (context: GetStaticPropsContext) => {
+  const { params } = context
+
   try {
     const data = await apiClient.blog.$get({ query: { ids: params?.id } })
+    const all = await apiClient.blog.$get({
+      query: { fields: 'id,title,updatedAt,description,ogimage,publishedAt', limit: 3000 },
+    })
+
     return {
-      props: { blog: data.contents.shift() },
+      props: { blog: data.contents.shift(), contents: all.contents },
     }
   } catch (err) {
     if (err instanceof Error) {
@@ -34,19 +37,21 @@ export const getStaticProps: GetStaticProps = async ({ params }) => {
   }
 }
 
-export default function ArticleDetail({ blog }: ArticleDetailProps) {
+export default function ArticleDetail({ blog, contents }: ArticleDetailProps) {
   if (!blog) return
   return (
-    <Box
-      sx={{
-        '& blockquote': {
-          px: 2,
-          borderLeft: 2,
-          borderColor: 'grey.500',
-        },
-      }}
-    >
-      <Markdown markdown={blog.body} />
-    </Box>
+    <NestedLayout contents={contents}>
+      <Box
+        sx={{
+          '& blockquote': {
+            px: 2,
+            borderLeft: 2,
+            borderColor: 'grey.500',
+          },
+        }}
+      >
+        <Markdown markdown={blog.body} />
+      </Box>
+    </NestedLayout>
   )
 }
