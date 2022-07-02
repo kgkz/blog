@@ -1,7 +1,7 @@
 import dayjs from 'dayjs'
 import utc from 'dayjs/plugin/utc'
 import timezone from 'dayjs/plugin/timezone'
-import { Blog } from '../src/types/apiResponse'
+import { Blog } from '../types/apiResponse'
 
 dayjs.extend(utc)
 dayjs.extend(timezone)

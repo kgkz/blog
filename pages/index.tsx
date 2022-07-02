@@ -1,10 +1,10 @@
 import type { GetStaticProps, NextPage } from 'next'
-import { Container, Grid } from '@mui/material'
+import Grid from '@mui/material/Grid'
 
 import Main from '../components/Main'
 import { Blog } from '../src/types/apiResponse'
 import { apiClient } from '../src/lib/api-client'
-import Layout from '../components/layout/Layout'
+import Sidebar from '../components/Sidebar'
 
 type Props = {
   contents: Blog[]
@@ -22,11 +22,16 @@ export const getStaticProps: GetStaticProps = async () => {
 const Home: NextPage<Props> = props => {
   const { contents } = props
   return (
-    <Container maxWidth="lg">
-      <Layout contents={contents}>
-        <Main title="my posts" contents={contents} />
-      </Layout>
-    </Container>
+    <Grid container spacing={2}>
+      <Grid item xs={12} md={8}>
+        <Grid container spacing={4}>
+          <Main title="my posts" contents={contents} />
+        </Grid>
+      </Grid>
+      <Grid item xs={12} md={4}>
+        <Sidebar contents={contents} />
+      </Grid>
+    </Grid>
   )
 }
 

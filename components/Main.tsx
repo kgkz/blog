@@ -1,5 +1,5 @@
 import { Typography, Grid, Card, CardActionArea, CardContent, CardMedia } from '@mui/material'
-import { formatDate } from '../lib/utils'
+import { formatDate } from '../src/lib/utils'
 import { Blog } from '../src/types/apiResponse'
 
 type MainProps = {
@@ -11,7 +11,7 @@ export default function Main(props: MainProps) {
   const { title, contents } = props
 
   return (
-    <Grid container spacing={4}>
+    <>
       {contents.map((content, index) => {
         return (
           <Grid item key={index} xs={12} md={6}>
@@ -40,6 +40,6 @@ export default function Main(props: MainProps) {
           </Grid>
         )
       })}
-    </Grid>
+    </>
   )
 }

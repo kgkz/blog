@@ -33,7 +33,11 @@ export default function Header(props: HeaderProps) {
           <Search />
         </IconButton>
       </Toolbar>
-      <Toolbar component="nav" variant="dense" sx={{ justifyContent: 'left', overflowX: 'auto' }}>
+      <Toolbar
+        component="nav"
+        variant="dense"
+        sx={{ justifyContent: 'left', overflowX: 'auto', borderBottom: 1, borderColor: 'divider' }}
+      >
         {sections.map(section => (
           <Link
             href={`/header/${section.path}`}

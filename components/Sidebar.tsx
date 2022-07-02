@@ -7,7 +7,7 @@ import ListItemText from '@mui/material/ListItemText'
 import Box from '@mui/material/Box'
 import Link from '@mui/material/Link'
 
-import { groupByDate } from '../lib/utils'
+import { groupByDate } from '../src/lib/utils'
 import { Blog } from '../src/types/apiResponse'
 
 type SidebarProps = {
