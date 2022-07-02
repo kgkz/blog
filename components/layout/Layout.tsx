@@ -1,5 +1,4 @@
 import { ReactElement } from 'react'
-import Grid from '@mui/material/Grid'
 import Container from '@mui/material/Container'
 
 import Header from './Header'
