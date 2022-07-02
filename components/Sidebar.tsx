@@ -1,22 +1,25 @@
 import Typography from '@mui/material/Typography'
 import Paper from '@mui/material/Paper'
+import Box from '@mui/material/Box'
 import List from '@mui/material/List'
 import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
-import Box from '@mui/material/Box'
-import Link from '@mui/material/Link'
 import NextLink from 'next/link'
+import Chip from '@mui/material/Chip'
+import LocalOfferIcon from '@mui/icons-material/LocalOffer'
 
 import { groupByDate } from '../src/lib/utils'
-import { Blog } from '../src/types/apiResponse'
+import { Blog, Category, Tag } from '../src/types/apiResponse'
 
 type SidebarProps = {
-  contents: Blog[]
+  blogs: Blog[]
+  categories?: Category[]
+  tags?: Tag[]
 }
 
-export default function Sidebar({ contents }: SidebarProps) {
-  const monthlyIndex = groupByDate(contents)
+export default function Sidebar({ blogs, categories, tags }: SidebarProps) {
+  const monthlyIndex = groupByDate(blogs)
   return (
     <>
       <Paper elevation={0} sx={{ p: 2, bgcolor: 'grey.200' }}>
@@ -25,8 +28,8 @@ export default function Sidebar({ contents }: SidebarProps) {
         </Typography>
         <Typography>ここに自分の略歴を載せてみる</Typography>
       </Paper>
-      <Box sx={{ p: 2, bgcolor: 'black.200' }}>
-        <Typography variant="h6" gutterBottom sx={{ mt: 3 }}>
+      <Box sx={{ my: 3 }}>
+        <Typography variant="h6" gutterBottom>
           Archives
         </Typography>
         <List>
@@ -42,6 +45,59 @@ export default function Sidebar({ contents }: SidebarProps) {
             )
           })}
         </List>
+      </Box>
+      <Box sx={{ my: 3 }}>
+        <Typography variant="h6" gutterBottom>
+          Category
+        </Typography>
+        <List>
+          {categories ? (
+            categories.map((category, index) => {
+              return (
+                <NextLink key={index} href={`/header/about`} passHref>
+                  <ListItem>
+                    <ListItemButton>
+                      <ListItemText primary={category.name} />
+                    </ListItemButton>
+                  </ListItem>
+                </NextLink>
+              )
+            })
+          ) : (
+            <></>
+          )}
+        </List>
+      </Box>
+      <Box sx={{ my: 3 }}>
+        <Typography variant="h6" gutterBottom>
+          Tag
+        </Typography>
+        <Box
+          sx={{
+            display: 'flex',
+            flexWrap: 'wrap',
+            listStyle: 'none',
+            gap: 1,
+          }}
+        >
+          {tags ? (
+            tags.map((tag, index) => {
+              return (
+                <Chip
+                  key={index}
+                  label={tag.name}
+                  icon={<LocalOfferIcon />}
+                  color="secondary"
+                  variant="outlined"
+                  clickable
+                  size="small"
+                />
+              )
+            })
+          ) : (
+            <></>
+          )}
+        </Box>
       </Box>
     </>
   )

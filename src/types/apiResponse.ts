@@ -22,11 +22,8 @@ export type Author = BaseValue & {
   image: Image
 }
 
-export type Partner = {
-  company: string
-  url: string
-  description: string
-  logo: Image
+export type Tag = BaseValue & {
+  name: string
 }
 
 export type Blog = BaseValue & {
@@ -37,7 +34,7 @@ export type Blog = BaseValue & {
   description: string
   ogimage: Image
   writer: Author | null
-  partner: Partner | null
+  tag: Tag | null
   related_blogs: Blog[]
 }
 

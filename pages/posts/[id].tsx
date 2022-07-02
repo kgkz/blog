@@ -21,13 +21,20 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   const { params } = context
 
   try {
-    const data = await apiClient.blog.$get({ query: { ids: params?.id } })
-    const all = await apiClient.blog.$get({
+    const blog = await apiClient.blog.$get({ query: { ids: params?.id } })
+    const blogs = await apiClient.blog.$get({
       query: { fields: 'id,title,updatedAt,description,ogimage,publishedAt', limit: 3000 },
     })
+    const categories = await apiClient.categories.$get()
+    const tags = await apiClient.tags.$get()
 
     return {
-      props: { blog: data.contents.shift(), contents: all.contents },
+      props: {
+        blog: blog.contents.shift(),
+        blogs: blogs.contents,
+        categories: categories.contents,
+        tags: tags.contents,
+      },
     }
   } catch (err) {
     if (err instanceof Error) {
@@ -37,10 +44,10 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   }
 }
 
-export default function ArticleDetail({ blog, contents }: ArticleDetailProps) {
-  if (!blog) return
+export default function ArticleDetail({ blog, blogs, categories, tags }: ArticleDetailProps) {
+  if (!blog || !blogs) return
   return (
-    <NestedLayout contents={contents}>
+    <NestedLayout blogs={blogs} categories={categories} tags={tags}>
       <Box
         sx={{
           '& blockquote': {
