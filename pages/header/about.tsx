@@ -7,7 +7,7 @@ import NestedLayout from '../../components/layout/NestedLayout'
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 export const getStaticProps = async () => {
-  const blogs = await apiClient.blog.$get({
+  const blogs = await apiClient.blogs.$get({
     query: { fields: 'id,title,updatedAt,description,ogimage,publishedAt', limit: 3000 },
   })
   const categories = await apiClient.categories.$get()

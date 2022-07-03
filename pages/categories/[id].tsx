@@ -1,16 +1,17 @@
 import { GetStaticPaths, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
-import Box from '@mui/material/Grid'
+import Grid from '@mui/material/Grid'
 
 import { apiClient } from '../../src/lib/api-client'
-import Markdown from '../../components/Markdown'
 import NestedLayout from '../../components/layout/NestedLayout'
+import Main from '../../components/Main'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps> & { errors?: string }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await apiClient.blogs.$get({ query: { limit: 3000 } })
-  const paths = data.contents.map(content => ({ params: { id: content.id } }))
-
+  const data = await apiClient.categories.$get()
+  const paths = data.contents.map(content => ({
+    params: { id: content.id },
+  }))
   return {
     paths,
     fallback: false,
@@ -19,9 +20,13 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
 export const getStaticProps = async (context: GetStaticPropsContext) => {
   const { params } = context
-
   try {
-    const blog = await apiClient.blogs.$get({ query: { ids: params?.id } })
+    const filterdBlogs = await apiClient.blogs.$get({
+      query: {
+        filters: `category[equals]${params?.id}`,
+        fields: 'id,title,updatedAt,description,ogimage,publishedAt',
+      },
+    })
     const blogs = await apiClient.blogs.$get({
       query: { fields: 'id,title,updatedAt,description,ogimage,publishedAt', limit: 3000 },
     })
@@ -30,7 +35,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
 
     return {
       props: {
-        blog: blog.contents.shift(),
+        filterdBlogs: filterdBlogs.contents,
         blogs: blogs.contents,
         categories: categories.contents,
         tags: tags.contents,
@@ -44,21 +49,13 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   }
 }
 
-export default function PostsId({ blog, blogs, categories, tags }: Props) {
-  if (!blog || !blogs) return
+export default function CategoriesId({ filterdBlogs, blogs, categories, tags }: Props) {
+  if (!filterdBlogs || !blogs) return
   return (
     <NestedLayout blogs={blogs} categories={categories} tags={tags}>
-      <Box
-        sx={{
-          '& blockquote': {
-            px: 2,
-            borderLeft: 2,
-            borderColor: 'grey.500',
-          },
-        }}
-      >
-        <Markdown markdown={blog.body} />
-      </Box>
+      <Grid container spacing={4}>
+        <Main blogs={filterdBlogs} />
+      </Grid>
     </NestedLayout>
   )
 }

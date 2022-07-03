@@ -54,7 +54,7 @@ export default function Sidebar({ blogs, categories, tags }: SidebarProps) {
           {categories ? (
             categories.map((category, index) => {
               return (
-                <NextLink key={index} href={`/header/about`} passHref>
+                <NextLink key={index} href={`/categories/${category.id}`} passHref>
                   <ListItem>
                     <ListItemButton>
                       <ListItemText primary={category.name} />
@@ -83,15 +83,16 @@ export default function Sidebar({ blogs, categories, tags }: SidebarProps) {
           {tags ? (
             tags.map((tag, index) => {
               return (
-                <Chip
-                  key={index}
-                  label={tag.name}
-                  icon={<LocalOfferIcon />}
-                  color="secondary"
-                  variant="outlined"
-                  clickable
-                  size="small"
-                />
+                <NextLink key={index} href={`/tags/${tag.id}`} passHref>
+                  <Chip
+                    label={tag.name}
+                    icon={<LocalOfferIcon />}
+                    color="secondary"
+                    variant="outlined"
+                    clickable
+                    size="small"
+                  />
+                </NextLink>
               )
             })
           ) : (
