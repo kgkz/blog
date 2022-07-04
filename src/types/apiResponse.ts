@@ -33,8 +33,8 @@ export type Blog = BaseValue & {
   body: string
   description: string
   ogimage: Image
-  writer: Author | null
-  tag: Tag | null
+  writer: Author
+  tag: Tag[]
   related_blogs: Blog[]
 }
 

@@ -1,4 +1,14 @@
-import { Typography, Grid, Card, CardActionArea, CardContent, CardMedia } from '@mui/material'
+import {
+  Typography,
+  Grid,
+  Card,
+  CardActionArea,
+  CardContent,
+  CardMedia,
+  Chip,
+  Box,
+} from '@mui/material'
+import LocalOfferIcon from '@mui/icons-material/LocalOffer'
 import NextLink from 'next/link'
 import { formatDate } from '../src/lib/utils'
 import { Blog } from '../src/types/apiResponse'
@@ -24,9 +34,30 @@ export default function Main({ blogs }: MainProps) {
                       {formatDate(blog.updatedAt, 'YYYY/MM/DD')}
                     </Typography>
                     <Typography variant="subtitle1">{blog.description}</Typography>
-                    <Typography variant="subtitle1" color="primary">
-                      Continue reading...
-                    </Typography>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        flexWrap: 'wrap',
+                        listStyle: 'none',
+                        gap: 1,
+                      }}
+                    >
+                      {blog.tag.length ? (
+                        blog.tag.map((_, index) => (
+                          <Chip
+                            key={index}
+                            label={_.name}
+                            icon={<LocalOfferIcon />}
+                            color="secondary"
+                            variant="outlined"
+                            clickable
+                            size="small"
+                          />
+                        ))
+                      ) : (
+                        <></>
+                      )}
+                    </Box>
                   </CardContent>
                   <CardMedia
                     component="img"
