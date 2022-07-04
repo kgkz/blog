@@ -23,7 +23,10 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   try {
     const blog = await apiClient.blogs.$get({ query: { ids: params?.id } })
     const blogs = await apiClient.blogs.$get({
-      query: { fields: 'id,title,updatedAt,description,ogimage,publishedAt', limit: 3000 },
+      query: {
+        fields: 'id,title,updatedAt,description,ogimage,publishedAt,tag,category',
+        limit: 3000,
+      },
     })
     const categories = await apiClient.categories.$get()
     const tags = await apiClient.tags.$get()
