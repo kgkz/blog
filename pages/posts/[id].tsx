@@ -4,6 +4,7 @@ import Box from '@mui/material/Grid'
 import { apiClient } from '../../src/lib/api-client'
 import Markdown from '../../components/Markdown'
 import NestedLayout from '../../components/layout/NestedLayout'
+import Paper from '@mui/material/Paper'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps> & { errors?: string }
 
@@ -51,17 +52,22 @@ export default function PostsId({ blog, blogs, categories, tags }: Props) {
   if (!blog || !blogs) return
   return (
     <NestedLayout blogs={blogs} categories={categories} tags={tags}>
-      <Box
-        sx={{
-          '& blockquote': {
-            px: 2,
-            borderLeft: 2,
-            borderColor: 'grey.500',
-          },
-        }}
-      >
-        <Markdown markdown={blog.body} />
-      </Box>
+      <>
+        <Box>
+          <Paper>TOC</Paper>
+        </Box>
+        <Box
+          sx={{
+            '& blockquote': {
+              px: 2,
+              borderLeft: 2,
+              borderColor: 'grey.500',
+            },
+          }}
+        >
+          <Markdown markdown={blog.body} />
+        </Box>
+      </>
     </NestedLayout>
   )
 }
