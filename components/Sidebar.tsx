@@ -26,7 +26,8 @@ export default function Sidebar({ blogs, categories, tags }: SidebarProps) {
         <Typography variant="h6" gutterBottom>
           About
         </Typography>
-        <Typography>ここに自分の略歴を載せてみる</Typography>
+        {/* ToDO ここもAPI経由の情報にする？ */}
+        <Typography></Typography>
       </Paper>
       <Box sx={{ my: 3 }}>
         <Typography variant="h6" gutterBottom>
