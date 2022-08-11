@@ -1,8 +1,8 @@
 import { ReactElement } from 'react'
 import Container from '@mui/material/Container'
 
-import Header from './Header'
-import Footer from './Footer'
+import Header from './header'
+import Footer from './footer'
 import { Box } from '@mui/material'
 
 type LayoutProps = {

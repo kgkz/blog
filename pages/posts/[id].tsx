@@ -2,8 +2,8 @@ import { GetStaticPaths, GetStaticPropsContext, InferGetStaticPropsType } from '
 import Box from '@mui/material/Grid'
 
 import { apiClient } from '../../src/lib/api-client'
-import Markdown from '../../components/Markdown'
-import NestedLayout from '../../components/layout/NestedLayout'
+import Markdown from '../../components/markdown'
+import NestedLayout from '../../components/layout/nestedLayout'
 import Paper from '@mui/material/Paper'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps> & { errors?: string }

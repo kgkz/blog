@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Typography } from '@mui/material'
 import { InferGetStaticPropsType } from 'next'
 import { apiClient } from '../../src/lib/api-client'
-import NestedLayout from '../../components/layout/NestedLayout'
+import NestedLayout from '../../components/layout/nestedLayout'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 

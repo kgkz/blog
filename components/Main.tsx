@@ -25,15 +25,30 @@ export default function Main({ blogs }: MainProps) {
           <Grid item key={index} xs={12} md={6}>
             <NextLink href={`/posts/${blog.id}`} passHref>
               <CardActionArea component="a">
-                <Card sx={{ display: 'flex' }}>
-                  <CardContent sx={{ flex: 1 }}>
+                <Card sx={{ maxWidth: 345 }}>
+                  <CardMedia
+                    component="img"
+                    sx={{ height: 170, boarderRadius: 30 }}
+                    src={blog.ogimage?.url}
+                    alt={blog.description}
+                  />
+                  <CardContent>
                     <Typography component="h2" variant="h5">
                       {blog.title}
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      sx={{
+                        maxWidth: 'inherit',
+                        textOverflow: 'ellipsis',
+                        whiteSpace: 'noWrap',
+                      }}
+                    >
+                      {blog.description}
                     </Typography>
                     <Typography variant="subtitle1" color="text.secondary">
                       {formatDate(blog.updatedAt, 'YYYY/MM/DD')}
                     </Typography>
-                    <Typography variant="subtitle1">{blog.description}</Typography>
                     <Box
                       sx={{
                         display: 'flex',
@@ -59,12 +74,6 @@ export default function Main({ blogs }: MainProps) {
                       )}
                     </Box>
                   </CardContent>
-                  <CardMedia
-                    component="img"
-                    sx={{ width: 160, display: { xs: 'none', sm: 'block' } }}
-                    src={blog.ogimage?.url}
-                    alt={blog.description}
-                  />
                 </Card>
               </CardActionArea>
             </NextLink>

@@ -7,7 +7,7 @@ import CssBaseline from '@mui/material/CssBaseline'
 
 import theme from '../src/styles/theme'
 import createEmotionCache from '../src/lib/createEmotionCache'
-import Layout from '../components/layout/Layout'
+import Layout from '../components/layout/layout'
 
 const clientSideEmotionCache = createEmotionCache()
 

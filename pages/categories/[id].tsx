@@ -2,8 +2,8 @@ import { GetStaticPaths, GetStaticPropsContext, InferGetStaticPropsType } from '
 import Grid from '@mui/material/Grid'
 
 import { apiClient } from '../../src/lib/api-client'
-import NestedLayout from '../../components/layout/NestedLayout'
-import Main from '../../components/Main'
+import NestedLayout from '../../components/layout/nestedLayout'
+import Main from '../../components/main'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps> & { errors?: string }
 
