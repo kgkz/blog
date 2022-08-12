@@ -2,7 +2,7 @@ import Grid from '@mui/material/Grid'
 import { ReactElement } from 'react'
 
 import { Blog, Category, Tag } from '../../src/types/apiResponse'
-import Sidebar from '../sidebar'
+import Sidebar from '../Sidebar'
 
 type NestedLayoutProps = {
   readonly children: ReactElement
