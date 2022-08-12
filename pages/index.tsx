@@ -1,7 +1,7 @@
 import type { InferGetStaticPropsType, NextPage } from 'next'
 import Grid from '@mui/material/Grid'
 
-import Main from '../components/main'
+import Main from '../components/Main'
 import { apiClient } from '../src/lib/api-client'
 import NestedLayout from '../components/layout/nestedLayout'
 
