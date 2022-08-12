@@ -9,6 +9,8 @@ import {
   Box,
 } from '@mui/material'
 import LocalOfferIcon from '@mui/icons-material/LocalOffer'
+import Create from '@mui/icons-material/Create'
+import Autorenew from '@mui/icons-material/Autorenew'
 import NextLink from 'next/link'
 import { formatDate } from '../src/lib/utils'
 import { Blog } from '../src/types/apiResponse'
@@ -25,36 +27,67 @@ export default function Main({ blogs }: MainProps) {
           <Grid item key={index} xs={12} md={6}>
             <NextLink href={`/posts/${blog.id}`} passHref>
               <CardActionArea component="a">
-                <Card sx={{ maxWidth: 345 }}>
+                <Card sx={{ maxWidth: 350 }}>
                   <CardMedia
                     component="img"
-                    sx={{ height: 170, boarderRadius: 30 }}
+                    sx={{ height: 200, boarderRadius: 30 }}
                     src={blog.ogimage?.url}
                     alt={blog.description}
                   />
                   <CardContent>
-                    <Typography component="h2" variant="h5">
+                    <Typography gutterBottom component="div" variant="h5">
                       {blog.title}
                     </Typography>
                     <Typography
-                      variant="subtitle1"
+                      variant="body2"
                       sx={{
-                        maxWidth: 'inherit',
+                        mb: 3,
+                        width: 330,
+                        overflow: 'hidden',
                         textOverflow: 'ellipsis',
                         whiteSpace: 'noWrap',
                       }}
                     >
                       {blog.description}
                     </Typography>
-                    <Typography variant="subtitle1" color="text.secondary">
-                      {formatDate(blog.updatedAt, 'YYYY/MM/DD')}
-                    </Typography>
+                    <Box sx={{ mb: 0.5, display: 'flex', alignItems: 'center', flexWrap: 'wrap' }}>
+                      {blog?.publishedAt ? (
+                        <Box component="span" sx={{ mr: 0.5 }}>
+                          <Create fontSize="small" />
+                          <Typography
+                            sx={{ mx: 0.5 }}
+                            variant="subtitle1"
+                            component="span"
+                            color="text.secondary"
+                          >
+                            {formatDate(blog.publishedAt, 'YYYY/MM/DD')}
+                          </Typography>
+                        </Box>
+                      ) : (
+                        <></>
+                      )}
+                      {blog.updatedAt !== blog.publishedAt ? (
+                        <>
+                          <Autorenew fontSize="small" />
+                          <Typography
+                            sx={{ mx: 0.5 }}
+                            variant="subtitle1"
+                            component="span"
+                            color="text.secondary"
+                          >
+                            {formatDate(blog.updatedAt, 'YYYY/MM/DD')}
+                          </Typography>
+                        </>
+                      ) : (
+                        <></>
+                      )}
+                    </Box>
                     <Box
                       sx={{
                         display: 'flex',
                         flexWrap: 'wrap',
                         listStyle: 'none',
-                        gap: 1,
+                        gap: 1.5,
                       }}
                     >
                       {blog.tag.length ? (
