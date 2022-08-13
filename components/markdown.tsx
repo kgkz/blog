@@ -8,6 +8,8 @@ type MarkdownProps = {
 
 export default function Markdown(props: MarkdownProps) {
   const { markdown } = props
+  //FIXME:型問題の修正
+  const syntaxTheme: any = atomDark
   return (
     <>
       <ReactMarkdown
@@ -15,7 +17,7 @@ export default function Markdown(props: MarkdownProps) {
           code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '')
             return !inline && match ? (
-              <SyntaxHighlighter style={atomDark} language={match[1]} PreTag="div" {...props}>
+              <SyntaxHighlighter style={syntaxTheme} language={match[1]} PreTag="div" {...props}>
                 {String(children).replace(/\n$/, '')}
               </SyntaxHighlighter>
             ) : (

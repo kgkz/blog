@@ -52,7 +52,6 @@ export default function Main({ blogs }: MainProps) {
                     </Typography>
                     <Box
                       sx={{
-                        mb: 0.5,
                         display: 'flex',
                         alignItems: 'center',
                         flexWrap: 'wrap',
@@ -60,7 +59,7 @@ export default function Main({ blogs }: MainProps) {
                     >
                       {blog?.publishedAt ? (
                         <Box component="span" sx={{ mr: 0.5 }}>
-                          <Create />
+                          <Create fontSize="inherit" />
                           <Typography
                             sx={{ mx: 0.5 }}
                             variant="subtitle1"
@@ -74,16 +73,18 @@ export default function Main({ blogs }: MainProps) {
                         <></>
                       )}
                       {blog.updatedAt !== blog.publishedAt ? (
-                        <>
+                        <Box component="span" sx={{ ml: 0.5 }}>
+                          <Autorenew fontSize="inherit" />
                           <Typography
                             sx={{ mx: 0.5 }}
+                            fontSize="0.5"
                             variant="subtitle1"
                             component="span"
                             color="text.secondary"
                           >
                             {formatDate(blog.updatedAt, 'YYYY/MM/DD')}
                           </Typography>
-                        </>
+                        </Box>
                       ) : (
                         <></>
                       )}
