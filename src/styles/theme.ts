@@ -13,6 +13,12 @@ const theme = createTheme({
       main: red.A400,
     },
   },
+  typography: {
+    button: {
+      textTransform: 'none',
+      fontSize: 12,
+    },
+  },
 })
 
 export default theme

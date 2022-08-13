@@ -30,7 +30,7 @@ export default function Main({ blogs }: MainProps) {
                 <Card sx={{ maxWidth: 350 }}>
                   <CardMedia
                     component="img"
-                    sx={{ height: 200, boarderRadius: 30 }}
+                    sx={{ height: 200, boarderRadius: 40 }}
                     src={blog.ogimage?.url}
                     alt={blog.description}
                   />
@@ -41,8 +41,8 @@ export default function Main({ blogs }: MainProps) {
                     <Typography
                       variant="body2"
                       sx={{
-                        mb: 3,
                         width: 330,
+                        height: 30,
                         overflow: 'hidden',
                         textOverflow: 'ellipsis',
                         whiteSpace: 'noWrap',
@@ -50,45 +50,6 @@ export default function Main({ blogs }: MainProps) {
                     >
                       {blog.description}
                     </Typography>
-                    <Box
-                      sx={{
-                        display: 'flex',
-                        alignItems: 'center',
-                        flexWrap: 'wrap',
-                      }}
-                    >
-                      {blog?.publishedAt ? (
-                        <Box component="span" sx={{ mr: 0.5 }}>
-                          <Create fontSize="inherit" />
-                          <Typography
-                            sx={{ mx: 0.5 }}
-                            variant="subtitle1"
-                            component="span"
-                            color="text.secondary"
-                          >
-                            {formatDate(blog.publishedAt, 'YYYY/MM/DD')}
-                          </Typography>
-                        </Box>
-                      ) : (
-                        <></>
-                      )}
-                      {blog.updatedAt !== blog.publishedAt ? (
-                        <Box component="span" sx={{ ml: 0.5 }}>
-                          <Autorenew fontSize="inherit" />
-                          <Typography
-                            sx={{ mx: 0.5 }}
-                            fontSize="0.5"
-                            variant="subtitle1"
-                            component="span"
-                            color="text.secondary"
-                          >
-                            {formatDate(blog.updatedAt, 'YYYY/MM/DD')}
-                          </Typography>
-                        </Box>
-                      ) : (
-                        <></>
-                      )}
-                    </Box>
                     <Box
                       sx={{
                         display: 'flex',
@@ -106,10 +67,48 @@ export default function Main({ blogs }: MainProps) {
                             icon={<LocalOfferIcon />}
                             color="secondary"
                             variant="outlined"
-                            clickable
                             size="small"
                           />
                         ))
+                      ) : (
+                        <></>
+                      )}
+                    </Box>
+                    <Box
+                      sx={{
+                        display: 'flex',
+                        justifyContent: 'right',
+                        flexWrap: 'wrap',
+                        mt: 2.5,
+                      }}
+                    >
+                      {blog?.publishedAt ? (
+                        <Box component="span" sx={{ mr: 0.5 }}>
+                          <Create fontSize="inherit" />
+                          <Typography
+                            sx={{ mx: 0.5 }}
+                            variant="subtitle2"
+                            component="span"
+                            color="text.secondary"
+                          >
+                            {formatDate(blog.publishedAt, 'YYYY/MM/DD')}
+                          </Typography>
+                        </Box>
+                      ) : (
+                        <></>
+                      )}
+                      {blog.updatedAt !== blog.publishedAt ? (
+                        <Box component="span" sx={{ ml: 0.5 }}>
+                          <Autorenew fontSize="inherit" />
+                          <Typography
+                            sx={{ mx: 0.5 }}
+                            variant="subtitle2"
+                            component="span"
+                            color="text.secondary"
+                          >
+                            {formatDate(blog.updatedAt, 'YYYY/MM/DD')}
+                          </Typography>
+                        </Box>
                       ) : (
                         <></>
                       )}
