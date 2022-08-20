@@ -30,6 +30,9 @@ export default function Markdown(props: MarkdownProps) {
               </code>
             )
           },
+          h1({ children, ...props }) {
+            return <h1 id={`${children}`}>{children}</h1>
+          },
         }}
       >
         {markdown}

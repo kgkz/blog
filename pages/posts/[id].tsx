@@ -7,6 +7,7 @@ import AnchorLink from '../../components/anchorLink'
 import NestedLayout from '../../components/layout/nestedLayout'
 import Paper from '@mui/material/Paper'
 import { Typography } from '@mui/material'
+import Toc from '../../components/toc'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps> & { errors?: string }
 
@@ -53,25 +54,11 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
 export default function PostsId({ blog, blogs, categories, tags }: Props) {
   if (!blog || !blogs) return
 
-  const h1ContentsReg = new RegExp(/^#[^#]/)
-  const h1Contents = blog.body.split(/\r\n|\n/).filter(x => h1ContentsReg.test(x))
-
   return (
     <NestedLayout blogs={blogs} categories={categories} tags={tags}>
       <>
         <Box>
-          <Paper>
-            <Typography>TOC</Typography>
-            <ol>
-              {h1Contents.map((h1, index) => (
-                <li key={index}>
-                  <AnchorLink to={{ hash: h1.slice(2) }} anchor={h1.slice(2)}>
-                    {h1.slice(2)}
-                  </AnchorLink>
-                </li>
-              ))}
-            </ol>
-          </Paper>
+          <Toc contents={blog.body} />
         </Box>
         <Box
           sx={{
