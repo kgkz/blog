@@ -1,13 +1,15 @@
 import { GetStaticPaths, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import Box from '@mui/material/Grid'
+import Paper from '@mui/material/Paper'
+import Typography from '@mui/material/Typography'
 
 import { apiClient } from '../../src/lib/api-client'
 import Markdown from '../../components/markdown'
-import AnchorLink from '../../components/anchorLink'
 import NestedLayout from '../../components/layout/nestedLayout'
-import Paper from '@mui/material/Paper'
-import { Typography } from '@mui/material'
 import Toc from '../../components/toc'
+import CategoryTags from '../../components/categoryTags'
+import DateTag from '../../components/dateTag'
+import { border } from '@mui/system'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps> & { errors?: string }
 
@@ -57,9 +59,36 @@ export default function PostsId({ blog, blogs, categories, tags }: Props) {
   return (
     <NestedLayout blogs={blogs} categories={categories} tags={tags}>
       <>
-        <Box>
-          <Toc contents={blog.body} />
+        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
+          <Typography variant="h4" sx={{ fontWeight: 500 }}>
+            {blog.title}
+          </Typography>
         </Box>
+        <Box sx={{ display: 'flex', justifyContent: 'right', mt: 1, mb: 3, gap: 0.5 }}>
+          <CategoryTags tags={blog.tag} />
+          {blog.publishedAt ? <DateTag date={blog.publishedAt} icon="create" /> : <></>}
+          {blog.updatedAt ? <DateTag date={blog.updatedAt} icon="update" /> : <></>}
+        </Box>
+        <Box
+          component="img"
+          sx={{ width: '100%', height: 'auto', borderRadius: 4 }}
+          alt={blog.description}
+          src={blog.ogimage?.url}
+        />
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'center',
+            border: 0.2,
+            borderRadius: 2,
+            p: 3,
+            mt: 12,
+            mb: 2,
+          }}
+        >
+          <Typography variant="h6">{blog.description}</Typography>
+        </Box>
+        <Toc contents={blog.body} />
         <Box
           sx={{
             '& blockquote': {

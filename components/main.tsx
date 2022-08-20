@@ -1,19 +1,8 @@
-import {
-  Typography,
-  Grid,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Chip,
-  Box,
-} from '@mui/material'
-import LocalOfferIcon from '@mui/icons-material/LocalOffer'
-import Create from '@mui/icons-material/Create'
-import Autorenew from '@mui/icons-material/Autorenew'
+import { Typography, Grid, Card, CardActionArea, CardContent, CardMedia, Box } from '@mui/material'
 import NextLink from 'next/link'
-import { formatDate } from '../src/lib/utils'
 import { Blog } from '../src/types/apiResponse'
+import CategoryTags from './categoryTags'
+import DateTag from './dateTag'
 
 type MainProps = {
   blogs: Blog[]
@@ -59,20 +48,7 @@ export default function Main({ blogs }: MainProps) {
                         mt: 2,
                       }}
                     >
-                      {blog.tag.length ? (
-                        blog.tag.map((_, index) => (
-                          <Chip
-                            key={index}
-                            label={_.name}
-                            icon={<LocalOfferIcon />}
-                            color="secondary"
-                            variant="outlined"
-                            size="small"
-                          />
-                        ))
-                      ) : (
-                        <></>
-                      )}
+                      {blog.tag.length ? <CategoryTags tags={blog.tag} /> : <></>}
                     </Box>
                     <Box
                       sx={{
@@ -84,30 +60,14 @@ export default function Main({ blogs }: MainProps) {
                     >
                       {blog?.publishedAt ? (
                         <Box component="span" sx={{ mr: 0.5 }}>
-                          <Create fontSize="inherit" />
-                          <Typography
-                            sx={{ mx: 0.5 }}
-                            variant="subtitle2"
-                            component="span"
-                            color="text.secondary"
-                          >
-                            {formatDate(blog.publishedAt, 'YYYY/MM/DD')}
-                          </Typography>
+                          <DateTag date={blog.publishedAt} icon="create" />
                         </Box>
                       ) : (
                         <></>
                       )}
                       {blog.updatedAt !== blog.publishedAt ? (
                         <Box component="span" sx={{ ml: 0.5 }}>
-                          <Autorenew fontSize="inherit" />
-                          <Typography
-                            sx={{ mx: 0.5 }}
-                            variant="subtitle2"
-                            component="span"
-                            color="text.secondary"
-                          >
-                            {formatDate(blog.updatedAt, 'YYYY/MM/DD')}
-                          </Typography>
+                          <DateTag date={blog.updatedAt} icon="update" />
                         </Box>
                       ) : (
                         <></>

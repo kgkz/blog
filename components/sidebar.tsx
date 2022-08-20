@@ -6,11 +6,10 @@ import ListItem from '@mui/material/ListItem'
 import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import NextLink from 'next/link'
-import Chip from '@mui/material/Chip'
-import LocalOfferIcon from '@mui/icons-material/LocalOffer'
 
 import { groupByDate } from '../src/lib/utils'
 import { Blog, Category, Tag } from '../src/types/apiResponse'
+import CategoryTags from './categoryTags'
 
 type SidebarProps = {
   blogs: Blog[]
@@ -81,24 +80,7 @@ export default function Sidebar({ blogs, categories, tags }: SidebarProps) {
             gap: 1,
           }}
         >
-          {tags ? (
-            tags.map((tag, index) => {
-              return (
-                <NextLink key={index} href={`/tags/${tag.id}`} passHref>
-                  <Chip
-                    label={tag.name}
-                    icon={<LocalOfferIcon />}
-                    color="secondary"
-                    variant="outlined"
-                    clickable
-                    size="small"
-                  />
-                </NextLink>
-              )
-            })
-          ) : (
-            <></>
-          )}
+          {tags ? <CategoryTags tags={tags} /> : <></>}
         </Box>
       </Box>
     </>
