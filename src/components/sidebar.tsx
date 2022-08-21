@@ -23,15 +23,17 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import { groupByDate } from '../lib/utils'
 import { Author, Blog, Category, Tag } from '../types/apiResponse'
 import CategoryTags from './categoryTags'
+import Toc from './toc'
 
 type SidebarProps = {
   blogs: Blog[]
   categories?: Category[]
   tags?: Tag[]
   author?: Author
+  contents?: string
 }
 
-export default function Sidebar({ blogs, categories, tags, author }: SidebarProps) {
+export default function Sidebar({ blogs, categories, tags, author, contents }: SidebarProps) {
   const monthlyIndex = groupByDate(blogs)
   return (
     <>
@@ -143,6 +145,13 @@ export default function Sidebar({ blogs, categories, tags, author }: SidebarProp
             </Box>
           </CardActions>
         </Card>
+      ) : (
+        <></>
+      )}
+      {contents ? (
+        <Box display={{ xs: 'none', md: 'block' }} sx={{ position: 'sticky', top: 50, mt: 5 }}>
+          <Toc contents={contents} />
+        </Box>
       ) : (
         <></>
       )}

@@ -15,15 +15,21 @@ export const getStaticProps = async () => {
   })
   const categories = await apiClient.categories.$get()
   const tags = await apiClient.tags.$get()
+  const author = await apiClient.authors.$get()
 
   return {
-    props: { blogs: blogs.contents, categories: categories.contents, tags: tags.contents },
+    props: {
+      blogs: blogs.contents,
+      categories: categories.contents,
+      tags: tags.contents,
+      author: author.contents[0],
+    },
   }
 }
 
-export default function about({ blogs, categories, tags }: Props) {
+export default function about({ blogs, categories, tags, author }: Props) {
   return (
-    <NestedLayout blogs={blogs} categories={categories} tags={tags}>
+    <NestedLayout blogs={blogs} categories={categories} tags={tags} author={author}>
       <Typography>about page</Typography>
     </NestedLayout>
   )

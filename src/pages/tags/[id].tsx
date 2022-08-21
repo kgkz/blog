@@ -35,6 +35,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
     })
     const categories = await apiClient.categories.$get()
     const tags = await apiClient.tags.$get()
+    const author = await apiClient.authors.$get()
 
     return {
       props: {
@@ -42,6 +43,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
         blogs: blogs.contents,
         categories: categories.contents,
         tags: tags.contents,
+        author: author.contents[0],
       },
     }
   } catch (err) {
@@ -52,10 +54,10 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   }
 }
 
-export default function CategoriesId({ filterdBlogs, blogs, categories, tags }: Props) {
+export default function CategoriesId({ filterdBlogs, blogs, categories, tags, author }: Props) {
   if (!filterdBlogs || !blogs) return
   return (
-    <NestedLayout blogs={blogs} categories={categories} tags={tags}>
+    <NestedLayout blogs={blogs} categories={categories} tags={tags} author={author}>
       <Grid container spacing={4}>
         <Main blogs={filterdBlogs} />
       </Grid>

@@ -10,6 +10,7 @@ type NestedLayoutProps = {
   categories?: Category[]
   tags?: Tag[]
   author?: Author
+  contents?: string
 }
 
 export default function NestedLayout({
@@ -18,6 +19,7 @@ export default function NestedLayout({
   categories,
   tags,
   author,
+  contents,
 }: NestedLayoutProps) {
   return (
     <Grid container spacing={2}>
@@ -25,7 +27,13 @@ export default function NestedLayout({
         {children}
       </Grid>
       <Grid item xs={12} md={3}>
-        <Sidebar blogs={blogs} categories={categories} tags={tags} author={author} />
+        <Sidebar
+          blogs={blogs}
+          categories={categories}
+          tags={tags}
+          author={author}
+          contents={contents}
+        />
       </Grid>
     </Grid>
   )

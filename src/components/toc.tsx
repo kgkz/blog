@@ -7,31 +7,38 @@ import AnchorLink from './anchorLink'
 
 type TocProps = {
   contents: string
-  description: string
+  description?: string
 }
 
 export default function Toc({ contents, description }: TocProps) {
   const h1ContentsReg = new RegExp(/^#[^#]/)
   const h1Contents = contents ? contents.split(/\r\n|\n/).filter(x => h1ContentsReg.test(x)) : []
 
+  const font = description ? 22 : 15
   return (
     <Box borderTop={1} borderBottom={1}>
-      <Box sx={{ display: 'flex', justifyContent: 'center', pt: 5 }}>
-        <SummarizeIcon fontSize="large" />
-        <Typography variant="h5" component={'span'} sx={{ ml: 1 }}>
-          概要
-        </Typography>
-      </Box>
-      <Box
-        sx={{
-          display: 'flex',
-          justifyContent: 'center',
-          px: 3,
-          my: 2,
-        }}
-      >
-        <Typography variant="h6">{description}</Typography>
-      </Box>
+      {description ? (
+        <>
+          <Box sx={{ display: 'flex', justifyContent: 'center', pt: 5 }}>
+            <SummarizeIcon fontSize="large" />
+            <Typography variant="h5" component={'span'} sx={{ ml: 1 }}>
+              概要
+            </Typography>
+          </Box>
+          <Box
+            sx={{
+              display: 'flex',
+              pl: 3,
+              mt: 4,
+              mb: 7,
+            }}
+          >
+            <Typography variant="h6">{description}</Typography>
+          </Box>
+        </>
+      ) : (
+        <></>
+      )}
       <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
         <TocIcon fontSize="large" />
         <Typography variant="h5" component={'span'} sx={{ ml: 1 }}>
@@ -44,7 +51,7 @@ export default function Toc({ contents, description }: TocProps) {
           padding: 0,
           marfin: 0,
           listStyle: 'none',
-          fontSize: 22,
+          fontSize: font,
           mb: 5,
         }}
       >
