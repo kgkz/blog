@@ -16,15 +16,21 @@ export const getStaticProps = async () => {
   })
   const categories = await apiClient.categories.$get()
   const tags = await apiClient.tags.$get()
+  const author = await apiClient.authors.$get()
 
   return {
-    props: { blogs: blogs.contents, categories: categories.contents, tags: tags.contents },
+    props: {
+      blogs: blogs.contents,
+      categories: categories.contents,
+      tags: tags.contents,
+      author: author.contents[0],
+    },
   }
 }
 
-const Home: NextPage<Props> = ({ blogs, categories, tags }) => {
+const Home: NextPage<Props> = ({ blogs, categories, tags, author }) => {
   return (
-    <NestedLayout blogs={blogs} categories={categories} tags={tags}>
+    <NestedLayout blogs={blogs} categories={categories} tags={tags} author={author}>
       <Grid container spacing={4}>
         <Main blogs={blogs} />
       </Grid>
