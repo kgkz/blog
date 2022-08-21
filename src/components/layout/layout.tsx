@@ -25,7 +25,7 @@ export default function Layout({ children }: LayoutProps) {
     <Container maxWidth="lg">
       <Header title="kgkz" sections={sections} />
       <Box sx={{ my: 5 }}>{children}</Box>
-      <Footer title="hoge" description="fuga" />
+      <Footer />
     </Container>
   )
 }

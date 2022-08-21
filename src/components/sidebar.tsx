@@ -41,7 +41,7 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
         <Box>
           <Box display={'flex'}>
             <CategoryIcon fontSize="large" />
-            <Typography variant="h6" color="action" sx={{ mt: 0.2 }}>
+            <Typography variant="h6" color="action" sx={{ mt: 0.4 }}>
               Category
             </Typography>
           </Box>
@@ -69,7 +69,7 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
         <Box>
           <Box display={'flex'}>
             <LocalOfferIcon fontSize="large" />
-            <Typography variant="h6" color="action" sx={{ mt: 0.1 }}>
+            <Typography variant="h6" color="action" sx={{ mt: 0.3 }}>
               Tag
             </Typography>
           </Box>
@@ -88,7 +88,7 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
           <Box sx={{ mt: 3 }}>
             <Box display={'flex'}>
               <CalendarMonthIcon fontSize="large" />
-              <Typography variant="h6" color="action" sx={{ mt: 0.1 }}>
+              <Typography variant="h6" color="action" sx={{ mt: 0.6 }}>
                 Archive
               </Typography>
             </Box>

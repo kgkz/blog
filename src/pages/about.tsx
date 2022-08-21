@@ -1,9 +1,8 @@
 import * as React from 'react'
-import { InferGetStaticPropsType } from 'next'
 import { Typography } from '@mui/material'
-
-import NestedLayout from '../../components/layout/nestedLayout'
-import { apiClient } from '../../lib/api-client'
+import { InferGetStaticPropsType } from 'next'
+import { apiClient } from '../lib/api-client'
+import NestedLayout from '../components/layout/nestedLayout'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
@@ -31,7 +30,7 @@ export const getStaticProps = async () => {
 export default function about({ blogs, categories, tags, author }: Props) {
   return (
     <NestedLayout blogs={blogs} categories={categories} tags={tags} author={author}>
-      <Typography>Contact page</Typography>
+      <Typography>about page</Typography>
     </NestedLayout>
   )
 }
