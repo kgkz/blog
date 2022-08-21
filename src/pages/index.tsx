@@ -1,9 +1,9 @@
-import * as React from 'react'
-import { InferGetStaticPropsType } from 'next'
-import { Typography } from '@mui/material'
+import type { InferGetStaticPropsType, NextPage } from 'next'
+import Grid from '@mui/material/Grid'
 
-import NestedLayout from '../../components/layout/nestedLayout'
-import { apiClient } from '../../src/lib/api-client'
+import Main from '../components/main'
+import { apiClient } from '../lib/api-client'
+import NestedLayout from '../components/layout/nestedLayout'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
@@ -22,10 +22,14 @@ export const getStaticProps = async () => {
   }
 }
 
-export default function about({ blogs, categories, tags }: Props) {
+const Home: NextPage<Props> = ({ blogs, categories, tags }) => {
   return (
     <NestedLayout blogs={blogs} categories={categories} tags={tags}>
-      <Typography>Contact page</Typography>
+      <Grid container spacing={4}>
+        <Main blogs={blogs} />
+      </Grid>
     </NestedLayout>
   )
 }
+
+export default Home

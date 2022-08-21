@@ -7,8 +7,8 @@ import ListItemButton from '@mui/material/ListItemButton'
 import ListItemText from '@mui/material/ListItemText'
 import NextLink from 'next/link'
 
-import { groupByDate } from '../src/lib/utils'
-import { Blog, Category, Tag } from '../src/types/apiResponse'
+import { groupByDate } from '../lib/utils'
+import { Blog, Category, Tag } from '../types/apiResponse'
 import CategoryTags from './categoryTags'
 
 type SidebarProps = {

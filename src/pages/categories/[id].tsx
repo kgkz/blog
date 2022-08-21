@@ -1,14 +1,14 @@
 import { GetStaticPaths, GetStaticPropsContext, InferGetStaticPropsType } from 'next'
 import Grid from '@mui/material/Grid'
 
-import { apiClient } from '../../src/lib/api-client'
+import { apiClient } from '../../lib/api-client'
 import NestedLayout from '../../components/layout/nestedLayout'
 import Main from '../../components/main'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps> & { errors?: string }
 
 export const getStaticPaths: GetStaticPaths = async () => {
-  const data = await apiClient.tags.$get()
+  const data = await apiClient.categories.$get()
   const paths = data.contents.map(content => ({
     params: { id: content.id },
   }))
@@ -23,7 +23,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   try {
     const filterdBlogs = await apiClient.blogs.$get({
       query: {
-        filters: `tag[contains]${params?.id}`,
+        filters: `category[equals]${params?.id}`,
         fields: 'id,title,updatedAt,description,ogimage,publishedAt,tag,category',
       },
     })

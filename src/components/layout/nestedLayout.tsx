@@ -1,7 +1,7 @@
 import Grid from '@mui/material/Grid'
 import { ReactElement } from 'react'
 
-import { Blog, Category, Tag } from '../../src/types/apiResponse'
+import { Blog, Category, Tag } from '../../types/apiResponse'
 import Sidebar from '../sidebar'
 
 type NestedLayoutProps = {

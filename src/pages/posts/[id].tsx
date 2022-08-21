@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticPropsContext, InferGetStaticPropsType } from '
 import Box from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
-import { apiClient } from '../../src/lib/api-client'
+import { apiClient } from '../../lib/api-client'
 import Markdown from '../../components/markdown'
 import NestedLayout from '../../components/layout/nestedLayout'
 import Toc from '../../components/toc'

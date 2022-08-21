@@ -15,6 +15,9 @@
 # production
 /build
 
+#auto generated
+/src/lib/$path.ts
+
 # misc
 .DS_Store
 *.pem

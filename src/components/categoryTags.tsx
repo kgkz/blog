@@ -1,7 +1,7 @@
 import NextLink from 'next/link'
 import Chip from '@mui/material/Chip'
 import LocalOfferIcon from '@mui/icons-material/LocalOffer'
-import { Tag } from '../src/types/apiResponse'
+import { Tag } from '../types/apiResponse'
 
 type CategoryTagsProps = {
   tags: Tag[]

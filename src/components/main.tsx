@@ -1,6 +1,6 @@
 import { Typography, Grid, Card, CardActionArea, CardContent, CardMedia, Box } from '@mui/material'
 import NextLink from 'next/link'
-import { Blog } from '../src/types/apiResponse'
+import { Blog } from '../types/apiResponse'
 import CategoryTags from './categoryTags'
 import DateTag from './dateTag'
 

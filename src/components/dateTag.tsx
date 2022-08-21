@@ -1,7 +1,7 @@
 import Typography from '@mui/material/Typography'
 import Create from '@mui/icons-material/Create'
 import Autorenew from '@mui/icons-material/Autorenew'
-import { formatDate } from '../src/lib/utils'
+import { formatDate } from '../lib/utils'
 
 type DateTagProps = {
   date: string
