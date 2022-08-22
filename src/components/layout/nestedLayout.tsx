@@ -22,7 +22,7 @@ export default function NestedLayout({
   contents,
 }: NestedLayoutProps) {
   return (
-    <Grid container spacing={2}>
+    <Grid container spacing={6}>
       <Grid item xs={12} md={9}>
         {children}
       </Grid>
