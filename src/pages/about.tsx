@@ -1,12 +1,15 @@
-import * as React from 'react'
-import { Typography } from '@mui/material'
 import { InferGetStaticPropsType } from 'next'
-import { apiClient } from '../lib/api-client'
+import fs from 'fs'
+
 import NestedLayout from '../components/layout/nestedLayout'
+import Markdown from '../components/markdown'
+import { apiClient } from '../lib/api-client'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 export const getStaticProps = async () => {
+  const contents = fs.readFileSync(process.cwd() + '/docs/about.md', 'utf8')
+
   const blogs = await apiClient.blogs.$get({
     query: {
       fields: 'id,title,updatedAt,description,ogimage,publishedAt,tag,category',
@@ -23,14 +26,15 @@ export const getStaticProps = async () => {
       categories: categories.contents,
       tags: tags.contents,
       author: author.contents[0],
+      contents: contents,
     },
   }
 }
 
-export default function about({ blogs, categories, tags, author }: Props) {
+export default function About({ blogs, categories, tags, author, contents }: Props) {
   return (
     <NestedLayout blogs={blogs} categories={categories} tags={tags} author={author}>
-      <Typography>about page</Typography>
+      <Markdown markdown={contents} />
     </NestedLayout>
   )
 }
