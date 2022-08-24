@@ -2,6 +2,11 @@ export const pagesPath = {
   "about": {
     $url: (url?: { hash?: string }) => ({ pathname: '/about' as const, hash: url?.hash })
   },
+  "archive": {
+    _id: (id: string | number) => ({
+      $url: (url?: { hash?: string }) => ({ pathname: '/archive/[id]' as const, query: { id }, hash: url?.hash })
+    })
+  },
   "categories": {
     _id: (id: string | number) => ({
       $url: (url?: { hash?: string }) => ({ pathname: '/categories/[id]' as const, query: { id }, hash: url?.hash })

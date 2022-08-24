@@ -95,7 +95,7 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
             <List>
               {Array.from(monthlyIndex).map(([month, group], index) => {
                 return (
-                  <NextLink key={index} href={`/header/about`} passHref>
+                  <NextLink key={index} href={`/archive/${month}`} passHref>
                     <ListItem>
                       <ListItemButton>
                         <ListItemIcon sx={{ minWidth: 0 }}>

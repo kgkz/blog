@@ -14,7 +14,7 @@ export const groupByDate = (contents: Blog[]) => {
   return contents.reduce((group, content) => {
     if (!content.publishedAt) return group
 
-    const groupingMonth = formatDate(content.publishedAt, 'YYYY/MM')
+    const groupingMonth = formatDate(content.publishedAt, 'YYYY-MM')
     const _ = group.has(groupingMonth) ? group.get(groupingMonth) : undefined
     if (_ !== undefined) {
       _.push(content)
