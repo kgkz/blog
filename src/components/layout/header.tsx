@@ -41,7 +41,7 @@ export default function Header(props: HeaderProps) {
       >
         {sections.map(section => (
           <NextLink href={`/${section.path}`} key={section.title} passHref>
-            <Link color="inherit" noWrap variant="body2" sx={{ px: 5, flexShrink: 0 }}>
+            <Link color="inherit" noWrap variant="body1" sx={{ px: 5, flexShrink: 0 }}>
               {section.title}
             </Link>
           </NextLink>
