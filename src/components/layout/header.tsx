@@ -30,9 +30,6 @@ export default function Header(props: HeaderProps) {
         >
           {title}
         </Typography>
-        <IconButton>
-          <Search />
-        </IconButton>
       </Toolbar>
       <Toolbar
         component="nav"
