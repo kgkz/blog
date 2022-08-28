@@ -4,14 +4,17 @@ import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
 type PaginationProps = {
-  pageCount: number
-  currentPage: number
+  pageCount?: number
+  currentPage?: number
 }
 
 export default function Pagination({ pageCount, currentPage }: PaginationProps) {
+  const router = useRouter()
   const { items } = usePagination({
-    count: pageCount,
-    page: currentPage,
+    // count: pageCount,
+    // page: currentPage,
+    count: 5,
+    page: 3,
   })
 
   return (
@@ -26,11 +29,33 @@ export default function Pagination({ pageCount, currentPage }: PaginationProps) 
         }}
       >
         {items.map(({ page, type, selected, ...item }, index) => {
-          const children = type === 'page' ? page : '...'
+          let children = null
+
+          if (type === 'start-ellipsis' || type === 'end-ellipsis') {
+            children = '…'
+          } else if (type === 'page') {
+            children = (
+              <button
+                type="button"
+                style={{
+                  fontWeight: selected ? 'bold' : undefined,
+                }}
+                {...item}
+              >
+                {page}
+              </button>
+            )
+          } else {
+            children = (
+              <button type="button" {...item}>
+                {type}
+              </button>
+            )
+          }
 
           return (
             <Box component="li" key={index}>
-              あああ
+              {children}
             </Box>
           )
         })}
