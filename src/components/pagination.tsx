@@ -11,10 +11,8 @@ type PaginationProps = {
 export default function Pagination({ pageCount, currentPage }: PaginationProps) {
   const router = useRouter()
   const { items } = usePagination({
-    // count: pageCount,
-    // page: currentPage,
-    count: 5,
-    page: 3,
+    count: pageCount,
+    page: currentPage,
   })
 
   return (
