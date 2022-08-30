@@ -4,7 +4,7 @@ import Grid from '@mui/material/Grid'
 import { apiClient } from '../../lib/api-client'
 import NestedLayout from '../../components/layout/nestedLayout'
 import Main from '../../components/main'
-import { groupByDate } from '../../lib/utils'
+import { getDataForLayout, groupByDate } from '../../lib/utils'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps> & { errors?: string }
 
@@ -34,15 +34,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
         fields: 'id,title,updatedAt,description,ogimage,publishedAt,tag,category',
       },
     })
-    const blogs = await apiClient.blogs.$get({
-      query: {
-        fields: 'id,title,updatedAt,description,ogimage,publishedAt,tag,category',
-        limit: 3000,
-      },
-    })
-    const categories = await apiClient.categories.$get()
-    const tags = await apiClient.tags.$get()
-    const author = await apiClient.authors.$get()
+    const { blogs, categories, tags, author } = await getDataForLayout()
 
     return {
       props: {

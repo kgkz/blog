@@ -3,22 +3,14 @@ import fs from 'fs'
 
 import NestedLayout from '../components/layout/nestedLayout'
 import Markdown from '../components/markdown'
-import { apiClient } from '../lib/api-client'
+import { getDataForLayout } from '../lib/utils'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 export const getStaticProps = async () => {
   const contents = fs.readFileSync(process.cwd() + '/docs/privacy.md', 'utf8')
 
-  const blogs = await apiClient.blogs.$get({
-    query: {
-      fields: 'id,title,updatedAt,description,ogimage,publishedAt,tag,category',
-      limit: 3000,
-    },
-  })
-  const categories = await apiClient.categories.$get()
-  const tags = await apiClient.tags.$get()
-  const author = await apiClient.authors.$get()
+  const { blogs, categories, tags, author } = await getDataForLayout()
 
   return {
     props: {

@@ -8,6 +8,7 @@ import NestedLayout from '../../components/layout/nestedLayout'
 import Toc from '../../components/toc'
 import CategoryTags from '../../components/categoryTags'
 import DateTag from '../../components/dateTag'
+import { getDataForLayout } from '../../lib/utils'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps> & { errors?: string }
 
@@ -25,20 +26,11 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   const { params } = context
 
   try {
-    const blog = await apiClient.blogs.$get({ query: { ids: params?.id } })
-    const blogs = await apiClient.blogs.$get({
-      query: {
-        fields: 'id,title,updatedAt,description,ogimage,publishedAt,tag,category',
-        limit: 3000,
-      },
-    })
-    const categories = await apiClient.categories.$get()
-    const tags = await apiClient.tags.$get()
-    const author = await apiClient.authors.$get()
+    const { blog, blogs, categories, tags, author } = await getDataForLayout(params?.id)
 
     return {
       props: {
-        blog: blog.contents.shift(),
+        blog: blog?.contents.shift(),
         blogs: blogs.contents,
         categories: categories.contents,
         tags: tags.contents,
