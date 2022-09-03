@@ -23,7 +23,7 @@ const sections = [
 export default function Layout({ children }: LayoutProps) {
   return (
     <Container maxWidth="lg">
-      <Header title="kgkz" sections={sections} />
+      <Header title="でくりぷと" sections={sections} />
       <Box sx={{ my: 5 }}>{children}</Box>
       <Footer />
     </Container>
