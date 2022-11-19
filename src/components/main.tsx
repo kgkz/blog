@@ -16,7 +16,7 @@ export default function Main({ blogs }: MainProps) {
           <Grid item key={index} xs={12} md={6}>
             <NextLink href={`/posts/${blog.id}`} passHref>
               <CardActionArea component="a">
-                <Card sx={{ maxWidth: 350 }}>
+                <Card>
                   <CardMedia
                     component="img"
                     sx={{ height: 200, boarderRadius: 40 }}

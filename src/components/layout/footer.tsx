@@ -26,7 +26,7 @@ export default function Footer({}: FooterProps) {
     >
       <NextLink href="/privacy" passHref>
         <Link variant="caption" color="text.secondary" underline="hover">
-          プライバイシーポリシー
+          プライバシーポリシー
         </Link>
       </NextLink>
       <Box sx={{ mt: 0.5 }}>

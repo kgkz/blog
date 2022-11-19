@@ -14,23 +14,24 @@ export default function Toc({ contents, description }: TocProps) {
   const h1ContentsReg = new RegExp(/^#[^#]/)
   const h1Contents = contents ? contents.split(/\r\n|\n/).filter(x => h1ContentsReg.test(x)) : []
 
-  const font = description ? 22 : 15
+  const font = description ? 22 : 16
+
   return (
     <Box borderTop={1} borderBottom={1}>
       {description ? (
         <>
-          <Box sx={{ display: 'flex', justifyContent: 'center', pt: 5 }}>
+          <Box sx={{ display: 'flex', justifyContent: 'left', pt: 5 }}>
             <SummarizeIcon fontSize="large" />
-            <Typography variant="h5" component={'span'} sx={{ ml: 1 }}>
+            <Typography variant="h5" component={'span'} sx={{ ml: 1, mt: 0.3 }}>
               概要
             </Typography>
           </Box>
           <Box
             sx={{
               display: 'flex',
-              pl: 3,
-              mt: 4,
-              mb: 7,
+              pl: 5,
+              mt: 1.5,
+              mb: 3,
             }}
           >
             <Typography variant="h6">{description}</Typography>
@@ -39,9 +40,9 @@ export default function Toc({ contents, description }: TocProps) {
       ) : (
         <></>
       )}
-      <Box sx={{ display: 'flex', justifyContent: 'center', mt: 1 }}>
+      <Box sx={{ display: 'flex', justifyContent: 'left', mt: 1 }}>
         <TocIcon fontSize="large" />
-        <Typography variant="h5" component={'span'} sx={{ ml: 1 }}>
+        <Typography variant="h5" component={'span'} sx={{ ml: 1, mt: 0.3 }}>
           目次
         </Typography>
       </Box>
@@ -49,10 +50,10 @@ export default function Toc({ contents, description }: TocProps) {
         component="ol"
         sx={{
           padding: 0,
-          marfin: 0,
+          margin: 0,
           listStyle: 'none',
-          fontSize: font,
           mb: 5,
+          fontSize: font,
         }}
       >
         {h1Contents.map((h1, index) => (
@@ -61,8 +62,8 @@ export default function Toc({ contents, description }: TocProps) {
             key={index}
             sx={{
               counterIncrement: 'section',
-              my: 1,
-              pl: 2,
+              my: 2,
+              pl: 5,
               '&::before': {
                 content: 'counter(section)',
                 pr: 2,
