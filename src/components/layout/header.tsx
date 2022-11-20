@@ -4,7 +4,9 @@ import { IconButton, Typography } from '@mui/material'
 import { Search } from '@mui/icons-material'
 import Box from '@mui/material/Box'
 import Link from '@mui/material/Link'
+
 import NextLink from 'next/link'
+import Image from 'next/image'
 
 type HeaderProps = {
   title: string
@@ -18,27 +20,26 @@ export default function Header(props: HeaderProps) {
   const { sections, title } = props
 
   return (
-    <Box component="header">
-      <Toolbar sx={{ borderBottom: 1, borderColor: 'divider' }}>
-        <Typography
-          component="h2"
-          variant="h5"
-          color="inherit"
-          align="center"
-          noWrap
-          sx={{ flex: 1 }}
-        >
-          {title}
-        </Typography>
+    <Box component="header" sx={{ position: 'relative', overflow: 'hidden', height: 500 }}>
+      <Image src="/top.jpg" alt="top" layout="fill" objectFit="cover" />
+      <Toolbar>
+        <NextLink href="/" passHref>
+          <Link
+            variant="h3"
+            color="#ffffff"
+            underline="none"
+            noWrap
+            align="right"
+            sx={{ flex: 1, fontWeight: 'bold' }}
+          >
+            {title}
+          </Link>
+        </NextLink>
       </Toolbar>
-      <Toolbar
-        component="nav"
-        variant="dense"
-        sx={{ justifyContent: 'left', overflowX: 'auto', borderBottom: 1, borderColor: 'divider' }}
-      >
+      <Toolbar component="nav" variant="dense" sx={{ justifyContent: 'right', overflowX: 'auto' }}>
         {sections.map(section => (
           <NextLink href={`/${section.path}`} key={section.title} passHref>
-            <Link color="inherit" noWrap variant="body1" sx={{ px: 5, flexShrink: 0 }}>
+            <Link color="#ffffff" noWrap variant="h5" sx={{ px: 2, flexShrink: 0 }}>
               {section.title}
             </Link>
           </NextLink>
