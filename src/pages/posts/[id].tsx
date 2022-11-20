@@ -3,8 +3,7 @@ import Box from '@mui/material/Grid'
 import Typography from '@mui/material/Typography'
 
 import { apiClient } from '../../lib/api-client'
-import Markdown from '../../components/markdown'
-import NestedLayout from '../../components/layout/nestedLayout'
+import Layout from '../../components/layout/layout'
 import Toc from '../../components/toc'
 import CategoryTags from '../../components/categoryTags'
 import DateTag from '../../components/dateTag'
@@ -52,7 +51,8 @@ export default function PostsId({ blog, blogs, categories, tags, author }: Props
   if (!blog || !blogs) return
 
   return (
-    <NestedLayout
+    <Layout
+      blog={blog}
       blogs={blogs}
       categories={categories}
       tags={tags}
@@ -82,6 +82,6 @@ export default function PostsId({ blog, blogs, categories, tags, author }: Props
           <ParseHTML html={blog.body} />
         </Box>
       </>
-    </NestedLayout>
+    </Layout>
   )
 }

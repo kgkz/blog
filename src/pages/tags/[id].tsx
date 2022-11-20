@@ -2,7 +2,7 @@ import { GetStaticPaths, GetStaticPropsContext, InferGetStaticPropsType } from '
 import Grid from '@mui/material/Grid'
 
 import { apiClient } from '../../lib/api-client'
-import NestedLayout from '../../components/layout/nestedLayout'
+import Layout from '../../components/layout/layout'
 import Main from '../../components/main'
 import { getDataForLayout } from '../../lib/utils'
 
@@ -50,10 +50,10 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
 export default function CategoriesId({ filterdBlogs, blogs, categories, tags, author }: Props) {
   if (!filterdBlogs || !blogs) return
   return (
-    <NestedLayout blogs={blogs} categories={categories} tags={tags} author={author}>
+    <Layout blogs={blogs} categories={categories} tags={tags} author={author}>
       <Grid container spacing={4}>
         <Main blogs={filterdBlogs} />
       </Grid>
-    </NestedLayout>
+    </Layout>
   )
 }

@@ -1,7 +1,7 @@
 import { InferGetStaticPropsType } from 'next'
 import fs from 'fs'
 
-import NestedLayout from '../components/layout/nestedLayout'
+import Layout from '../components/layout/layout'
 import Markdown from '../components/markdown'
 import { getDataForLayout } from '../lib/utils'
 
@@ -25,8 +25,8 @@ export const getStaticProps = async () => {
 
 export default function Privacy({ blogs, categories, tags, author, contents }: Props) {
   return (
-    <NestedLayout blogs={blogs} categories={categories} tags={tags} author={author}>
+    <Layout blogs={blogs} categories={categories} tags={tags} author={author}>
       <Markdown markdown={contents} />
-    </NestedLayout>
+    </Layout>
   )
 }

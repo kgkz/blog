@@ -1,7 +1,7 @@
 import { InferGetStaticPropsType } from 'next'
 import Form from '../components/form'
 
-import NestedLayout from '../components/layout/nestedLayout'
+import Layout from '../components/layout/layout'
 import { getDataForLayout } from '../lib/utils'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
@@ -21,8 +21,8 @@ export const getStaticProps = async () => {
 
 export default function Contact({ blogs, categories, tags, author }: Props) {
   return (
-    <NestedLayout blogs={blogs} categories={categories} tags={tags} author={author}>
+    <Layout blogs={blogs} categories={categories} tags={tags} author={author}>
       <Form />
-    </NestedLayout>
+    </Layout>
   )
 }
