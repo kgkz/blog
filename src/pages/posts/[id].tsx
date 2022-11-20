@@ -9,6 +9,9 @@ import Toc from '../../components/toc'
 import CategoryTags from '../../components/categoryTags'
 import DateTag from '../../components/dateTag'
 import { getDataForLayout } from '../../lib/utils'
+import ParseHTML from '../../components/parseHTML'
+
+import 'highlight.js/styles/tokyo-night-dark.css'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps> & { errors?: string }
 
@@ -74,16 +77,9 @@ export default function PostsId({ blog, blogs, categories, tags, author }: Props
           src={blog.ogimage?.url}
         />
         <Toc contents={blog.body} description={blog.description} />
-        <Box
-          sx={{
-            '& blockquote': {
-              px: 2,
-              borderLeft: 2,
-              borderColor: 'grey.500',
-            },
-          }}
-        >
-          <Markdown markdown={blog.body} />
+        <Box component="div">
+          {/* <Markdown markdown={blog.body} /> */}
+          <ParseHTML html={blog.body} />
         </Box>
       </>
     </NestedLayout>

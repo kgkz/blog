@@ -1,6 +1,7 @@
 import { ReactNode, useEffect, useRef } from 'react'
 import { useRouter } from 'next/router'
 import { UrlObject } from 'url'
+import Link from '@mui/material/Link'
 import NextLink from 'next/link'
 
 type Props = {
@@ -23,8 +24,8 @@ export const AnchorLink = ({ children, to, anchor }: Props) => {
     return () => router.events.off('hashChangeStart', hashChanged)
   }, [anchor])
   return (
-    <NextLink href={to}>
-      <a ref={ref}>{children}</a>
+    <NextLink href={to} passHref>
+      <Link>{children}</Link>
     </NextLink>
   )
 }
