@@ -33,10 +33,10 @@ export default function Form() {
           />
           <TextField
             variant="outlined"
-            label="タイトル"
-            placeholder="〇〇について"
-            helperText={errors.title?.message}
-            {...register('title')}
+            label="お名前"
+            placeholder="出栗風太"
+            helperText={errors.name?.message}
+            {...register('name')}
           />
           <TextField
             variant="outlined"

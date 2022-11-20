@@ -7,7 +7,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
   if (req.method === 'POST') {
     const formData = new FormData()
     formData.append(process.env.GF_EMAIL, body.email)
-    formData.append(process.env.GF_TITLE, body.title)
+    formData.append(process.env.GF_Name, body.name)
     formData.append(process.env.GF_INQUIRY, body.inquiry)
 
     await axios

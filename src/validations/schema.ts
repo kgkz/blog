@@ -5,10 +5,10 @@ export const schema = z.object({
     .string({})
     .min(1, { message: '必須項目です。' })
     .email({ message: 'メールアドレスの形式が不正です。' }),
-  title: z
+  name: z
     .string({})
     .min(1, { message: '必須項目です。' })
-    .max(100, { message: '100文字以内で入力してください。' }),
+    .max(30, { message: '30文字以内で入力してください。' }),
   inquiry: z
     .string({})
     .min(1, { message: '必須項目です。' })
