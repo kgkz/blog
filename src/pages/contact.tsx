@@ -1,15 +1,12 @@
 import { InferGetStaticPropsType } from 'next'
-import fs from 'fs'
+import Form from '../components/form'
 
 import NestedLayout from '../components/layout/nestedLayout'
-import Markdown from '../components/markdown'
 import { getDataForLayout } from '../lib/utils'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps>
 
 export const getStaticProps = async () => {
-  const contents = fs.readFileSync(process.cwd() + '/docs/contact.md', 'utf8')
-
   const { blogs, categories, tags, author } = await getDataForLayout()
 
   return {
@@ -18,15 +15,14 @@ export const getStaticProps = async () => {
       categories: categories.contents,
       tags: tags.contents,
       author: author.contents[0],
-      contents: contents,
     },
   }
 }
 
-export default function Contact({ blogs, categories, tags, author, contents }: Props) {
+export default function Contact({ blogs, categories, tags, author }: Props) {
   return (
     <NestedLayout blogs={blogs} categories={categories} tags={tags} author={author}>
-      <Markdown markdown={contents} />
+      <Form />
     </NestedLayout>
   )
 }
