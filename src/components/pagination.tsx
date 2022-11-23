@@ -1,6 +1,5 @@
 import Box from '@mui/material/Box'
 import usePagination from '@mui/material/usePagination'
-import NextLink from 'next/link'
 import { useRouter } from 'next/router'
 
 type PaginationProps = {

@@ -5,6 +5,7 @@ import Head from 'next/head'
 import { ReactElement } from 'react'
 
 import { Author, Blog, Category, Tag } from '../../types/apiResponse'
+import Breadcrumbs from '../breadcrumbs'
 import Sidebar from '../sidebar'
 import Footer from './footer'
 import Header from './header'
@@ -17,6 +18,7 @@ type LayoutProps = {
   tags?: Tag[]
   author?: Author
   contents?: string
+  currentTag?: string
 }
 
 const sections = [
@@ -38,6 +40,7 @@ export default function Layout({
   tags,
   author,
   contents,
+  currentTag,
 }: LayoutProps) {
   return (
     <>
@@ -48,6 +51,7 @@ export default function Layout({
       </Head>
       <Container maxWidth="lg">
         <Header title="で・くりぷと" sections={sections} />
+        <Breadcrumbs blog={blog} blogs={blogs} currentTag={currentTag} />
         <Box sx={{ my: 5 }}>
           <Grid container spacing={6}>
             <Grid item xs={12} md={9}>

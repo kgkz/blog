@@ -29,7 +29,11 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
       },
     })
     const { blogs, categories, tags, author } = await getDataForLayout()
-
+    const currentTag = await apiClient.tags.$get({
+      query: {
+        filters: `id[equals]${params?.id}`,
+      },
+    })
     return {
       props: {
         filterdBlogs: filterdBlogs.contents,
@@ -37,6 +41,7 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
         categories: categories.contents,
         tags: tags.contents,
         author: author.contents[0],
+        currentTag: currentTag.contents[0],
       },
     }
   } catch (err) {
@@ -47,10 +52,23 @@ export const getStaticProps = async (context: GetStaticPropsContext) => {
   }
 }
 
-export default function CategoriesId({ filterdBlogs, blogs, categories, tags, author }: Props) {
+export default function CategoriesId({
+  filterdBlogs,
+  blogs,
+  categories,
+  tags,
+  author,
+  currentTag,
+}: Props) {
   if (!filterdBlogs || !blogs) return
   return (
-    <Layout blogs={blogs} categories={categories} tags={tags} author={author}>
+    <Layout
+      blogs={blogs}
+      categories={categories}
+      tags={tags}
+      author={author}
+      currentTag={currentTag.name}
+    >
       <Grid container spacing={4}>
         <Main blogs={filterdBlogs} />
       </Grid>
