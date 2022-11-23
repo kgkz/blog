@@ -65,7 +65,16 @@ export default function PostsId({ blog, blogs, categories, tags, author }: Props
             {blog.title}
           </Typography>
         </Box>
-        <Box sx={{ display: 'flex', justifyContent: 'right', mt: 1, mb: 3, gap: 0.5 }}>
+        <Box
+          sx={{
+            display: 'flex',
+            justifyContent: 'right',
+            alignItems: 'center',
+            mt: 3,
+            mb: 4,
+            gap: 0.5,
+          }}
+        >
           <CategoryTags tags={blog.tag} />
           {blog.publishedAt ? <DateTag date={blog.publishedAt} icon="create" /> : <></>}
           {blog.updatedAt ? <DateTag date={blog.updatedAt} icon="update" /> : <></>}

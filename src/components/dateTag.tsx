@@ -18,7 +18,7 @@ export default function DateTag({ date, icon }: DateTagProps) {
       ) : (
         <></>
       )}
-      <Typography sx={{ mx: 0.5 }} variant="subtitle2" component="span" color="text.secondary">
+      <Typography variant="subtitle2" component="span" color="text.secondary">
         {formatDate(date, 'YYYY/MM/DD')}
       </Typography>
     </>
