@@ -26,17 +26,15 @@ export default function Breadcrumbs({ blogs, blog, currentTag }: BreadcrumbsProp
   const renderBreadcrumbs = () => {
     if (pathName === '/' || !blogs.length) return
     let breadcrumbs = [
-      <NextLink href="/" key="home" passHref>
-        <Link sx={{ display: 'flex', alignItems: 'center' }}>
-          <HomeIcon sx={{ mr: 0.2, mb: 0.1 }} />
-          Home
-        </Link>
-      </NextLink>,
+      <Link href="/" key="home" component={NextLink} sx={{ display: 'flex', alignItems: 'center' }}>
+        <HomeIcon sx={{ mr: 0.2, mb: 0.1 }} />
+        Home
+      </Link>,
     ]
     switch (pathName) {
       case pathName.startsWith('/categories') && pathName:
         breadcrumbs.push(
-          <Typography sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography key={blogs[0].category.name} sx={{ display: 'flex', alignItems: 'center' }}>
             <CategoryIcon sx={{ mr: 0.2, mb: 0.1 }} />
             {blogs[0].category.name}
           </Typography>
@@ -44,7 +42,7 @@ export default function Breadcrumbs({ blogs, blog, currentTag }: BreadcrumbsProp
         break
       case pathName.startsWith('/tags') && pathName:
         breadcrumbs.push(
-          <Typography sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography key={currentTag} sx={{ display: 'flex', alignItems: 'center' }}>
             <LocalOfferIcon sx={{ mr: 0.2, mb: 0.1 }} />
             {currentTag}
           </Typography>
@@ -52,7 +50,7 @@ export default function Breadcrumbs({ blogs, blog, currentTag }: BreadcrumbsProp
         break
       case pathName.startsWith('/archive') && pathName:
         breadcrumbs.push(
-          <Typography sx={{ display: 'flex', alignItems: 'center' }}>
+          <Typography key="archive" sx={{ display: 'flex', alignItems: 'center' }}>
             <CalendarMonthIcon sx={{ mr: 0.2, mb: 0.1 }} />
             {formatDate(blogs[0].publishedAt ?? '', 'YYYY-MM')}
           </Typography>
@@ -60,13 +58,16 @@ export default function Breadcrumbs({ blogs, blog, currentTag }: BreadcrumbsProp
         break
       case pathName.startsWith('/posts') && pathName:
         breadcrumbs.push(
-          <NextLink href={`/categories/${blog?.category.id}`} passHref key={blog?.category.name}>
-            <Link sx={{ display: 'flex', alignItems: 'center' }}>
-              <CategoryIcon sx={{ mr: 0.2, mb: 0.1 }} />
-              {blog?.category.name}
-            </Link>
-          </NextLink>,
-          <Typography>{blog?.title}</Typography>
+          <Link
+            href={`/categories/${blog?.category.id}`}
+            key={blog?.category.name}
+            component={NextLink}
+            sx={{ display: 'flex', alignItems: 'center' }}
+          >
+            <CategoryIcon sx={{ mr: 0.2, mb: 0.1 }} />
+            {blog?.category.name}
+          </Link>,
+          <Typography key={blog?.title}>{blog?.title}</Typography>
         )
         break
     }

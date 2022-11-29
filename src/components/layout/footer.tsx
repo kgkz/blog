@@ -1,5 +1,4 @@
 import Box from '@mui/material/Box'
-import Container from '@mui/material/Container'
 import Typography from '@mui/material/Typography'
 import Link from '@mui/material/Link'
 import NextLink from 'next/link'
@@ -24,11 +23,15 @@ export default function Footer({}: FooterProps) {
         textAlign: 'center',
       }}
     >
-      <NextLink href="/privacy" passHref>
-        <Link variant="caption" color="text.secondary" underline="hover">
-          プライバシーポリシー
-        </Link>
-      </NextLink>
+      <Link
+        href="/privacy"
+        component={NextLink}
+        variant="caption"
+        color="text.secondary"
+        underline="hover"
+      >
+        プライバシーポリシー
+      </Link>
       <Box sx={{ mt: 0.5 }}>
         <Copyright />
       </Box>

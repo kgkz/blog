@@ -5,7 +5,7 @@ import Link from '@mui/material/Link'
 import NextLink from 'next/link'
 
 type Props = {
-  to: UrlObject | string
+  to: string
   anchor: string
   children: ReactNode
 }
@@ -24,9 +24,9 @@ export const AnchorLink = ({ children, to, anchor }: Props) => {
     return () => router.events.off('hashChangeStart', hashChanged)
   }, [anchor])
   return (
-    <NextLink href={to} passHref>
-      <Link>{children}</Link>
-    </NextLink>
+    <Link href={to} component={NextLink}>
+      {children}
+    </Link>
   )
 }
 

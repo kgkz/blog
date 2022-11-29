@@ -20,26 +20,32 @@ export default function Header(props: HeaderProps) {
     <Box component="header" sx={{ position: 'relative', overflow: 'hidden', height: 500 }}>
       <Image src="/top.jpg" alt="top" layout="fill" objectFit="cover" />
       <Toolbar>
-        <NextLink href="/" passHref>
-          <Link
-            variant="h3"
-            color="#ffffff"
-            underline="none"
-            noWrap
-            align="right"
-            sx={{ flex: 1, fontWeight: 'bold' }}
-          >
-            {title}
-          </Link>
-        </NextLink>
+        <Link
+          component={NextLink}
+          variant="h3"
+          href="/"
+          color="#ffffff"
+          underline="none"
+          noWrap
+          align="right"
+          sx={{ flex: 1, fontWeight: 'bold' }}
+        >
+          {title}
+        </Link>
       </Toolbar>
       <Toolbar component="nav" variant="dense" sx={{ justifyContent: 'right', overflowX: 'auto' }}>
         {sections.map(section => (
-          <NextLink href={`/${section.path}`} key={section.title} passHref>
-            <Link color="#ffffff" noWrap variant="h5" sx={{ px: 2, flexShrink: 0 }}>
-              {section.title}
-            </Link>
-          </NextLink>
+          <Link
+            href={`/${section.path}`}
+            component={NextLink}
+            key={section.title}
+            color="#ffffff"
+            noWrap
+            variant="h5"
+            sx={{ px: 2, flexShrink: 0 }}
+          >
+            {section.title}
+          </Link>
         ))}
       </Toolbar>
     </Box>

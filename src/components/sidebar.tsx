@@ -49,16 +49,14 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
             {categories ? (
               categories.map((category, index) => {
                 return (
-                  <NextLink key={index} href={`/categories/${category.id}`} passHref>
-                    <ListItem>
-                      <ListItemButton>
-                        <ListItemIcon sx={{ minWidth: 0 }}>
-                          <ChevronRightIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={category.name} />
-                      </ListItemButton>
-                    </ListItem>
-                  </NextLink>
+                  <ListItem key={index}>
+                    <ListItemButton component={NextLink} href={`/categories/${category.id}`}>
+                      <ListItemIcon sx={{ minWidth: 0 }}>
+                        <ChevronRightIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={category.name} />
+                    </ListItemButton>
+                  </ListItem>
                 )
               })
             ) : (
@@ -95,16 +93,14 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
             <List>
               {Array.from(monthlyIndex).map(([month, group], index) => {
                 return (
-                  <NextLink key={index} href={`/archive/${month}`} passHref>
-                    <ListItem>
-                      <ListItemButton>
-                        <ListItemIcon sx={{ minWidth: 0 }}>
-                          <ChevronRightIcon />
-                        </ListItemIcon>
-                        <ListItemText primary={`${month} (${group.length})`} />
-                      </ListItemButton>
-                    </ListItem>
-                  </NextLink>
+                  <ListItem key={index}>
+                    <ListItemButton component={NextLink} href={`/archive/${month}`}>
+                      <ListItemIcon sx={{ minWidth: 0 }}>
+                        <ChevronRightIcon />
+                      </ListItemIcon>
+                      <ListItemText primary={`${month} (${group.length})`} />
+                    </ListItemButton>
+                  </ListItem>
                 )
               })}
             </List>

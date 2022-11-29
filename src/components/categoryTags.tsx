@@ -5,23 +5,25 @@ import { Tag } from '../types/apiResponse'
 
 type CategoryTagsProps = {
   tags: Tag[]
+  anker?: boolean
 }
 
-export default function CategoryTags({ tags }: CategoryTagsProps) {
+export default function CategoryTags({ tags, anker = true }: CategoryTagsProps) {
   return (
     <>
       {tags.map((tag, index) => {
         return (
-          <NextLink key={index} href={`/tags/${tag.id}`} passHref>
-            <Chip
-              label={tag.name}
-              icon={<LocalOfferIcon />}
-              color="secondary"
-              variant="outlined"
-              clickable
-              size="small"
-            />
-          </NextLink>
+          <Chip
+            component={anker ? NextLink : 'div'}
+            key={index}
+            href={`/tags/${tag.id}`}
+            label={tag.name}
+            icon={<LocalOfferIcon />}
+            color="secondary"
+            variant="outlined"
+            clickable
+            size="small"
+          />
         )
       })}
     </>
