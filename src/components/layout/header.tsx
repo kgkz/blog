@@ -16,9 +16,13 @@ type HeaderProps = {
 export default function Header(props: HeaderProps) {
   const { sections, title } = props
 
+  const myLoader = ({ src, width, quality }: { src: string; width?: number; quality?: number }) => {
+    return `${process.env.IMAGE_URL}8cabe2d9091749739606486b6a961cd3/${src}?fm=webp`
+  }
+
   return (
     <Box component="header" sx={{ position: 'relative', overflow: 'hidden', height: 500 }}>
-      <Image src="/top.jpg" alt="top" layout="fill" objectFit="cover" />
+      <Image loader={myLoader} src="top.JPG" alt="top image" layout="fill" objectFit="cover" />
       <Toolbar>
         <Link
           component={NextLink}
