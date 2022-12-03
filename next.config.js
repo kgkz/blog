@@ -10,5 +10,8 @@ module.exports = {
         pathname: '/**/*',
       },
     ],
+    formats: ['image/webp'],
+    loader: 'custom',
+    loaderFile: './src/lib/imageLoader.ts',
   },
 }

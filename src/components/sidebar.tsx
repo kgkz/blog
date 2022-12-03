@@ -1,4 +1,5 @@
 import NextLink from 'next/link'
+import Image from 'next/image'
 
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
@@ -24,6 +25,7 @@ import { groupByDate } from '../lib/utils'
 import { Author, Blog, Category, Tag } from '../types/apiResponse'
 import CategoryTags from './categoryTags'
 import Toc from './toc'
+import imageLoader from '../lib/imageLoader'
 
 type SidebarProps = {
   blogs: Blog[]
@@ -109,7 +111,17 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
       </Box>
       {author ? (
         <Card>
-          <CardMedia component="img" alt="my profile image" height="140" image={author.image.url} />
+          <CardMedia sx={{ position: 'relative', overflow: 'hidden', height: '10rem' }}>
+            <Image
+              alt="my profile image"
+              src={`${author.image.url.split('/')[5]}/${author.image.url.split('/')[6]}`}
+              loader={imageLoader}
+              fill
+              quality={30}
+              priority
+              style={{ objectFit: 'cover' }}
+            />
+          </CardMedia>
           <CardContent>
             <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center' }}>
               {author.name}

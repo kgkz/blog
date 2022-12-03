@@ -5,6 +5,8 @@ import Link from '@mui/material/Link'
 import NextLink from 'next/link'
 import Image from 'next/image'
 
+import imageLoader from '../../lib/imageLoader'
+
 type HeaderProps = {
   title: string
   sections: ReadonlyArray<{
@@ -16,13 +18,17 @@ type HeaderProps = {
 export default function Header(props: HeaderProps) {
   const { sections, title } = props
 
-  const myLoader = ({ src, width, quality }: { src: string; width?: number; quality?: number }) => {
-    return `${process.env.IMAGE_URL}8cabe2d9091749739606486b6a961cd3/${src}?fm=webp`
-  }
-
   return (
     <Box component="header" sx={{ position: 'relative', overflow: 'hidden', height: 500 }}>
-      <Image loader={myLoader} src="top.JPG" alt="top image" layout="fill" objectFit="cover" />
+      <Image
+        loader={imageLoader}
+        src="8cabe2d9091749739606486b6a961cd3/top.JPG"
+        alt="top image"
+        fill
+        quality={30}
+        priority
+        style={{ objectFit: 'cover' }}
+      />
       <Toolbar>
         <Link
           component={NextLink}
