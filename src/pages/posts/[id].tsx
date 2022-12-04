@@ -11,6 +11,7 @@ import { getDataForLayout } from '../../lib/utils'
 import ParseHTML from '../../components/parseHTML'
 
 import 'highlight.js/styles/tokyo-night-dark.css'
+import Markdown from '../../components/markdown'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps> & { errors?: string }
 
@@ -87,8 +88,8 @@ export default function PostsId({ blog, blogs, categories, tags, author }: Props
         />
         <Toc contents={blog.body} description={blog.description} />
         <Box component="div">
-          {/* <Markdown markdown={blog.body} /> */}
-          <ParseHTML html={blog.body} />
+          <Markdown markdown={blog.body} />
+          {/* <ParseHTML html={blog.body} /> */}
         </Box>
       </>
     </Layout>
