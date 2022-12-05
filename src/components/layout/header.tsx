@@ -35,13 +35,12 @@ export default function Header(props: HeaderProps) {
       <Toolbar>
         <Link
           component={NextLink}
-          variant="h3"
           href="/"
           color="#ffffff"
           underline="none"
           noWrap
           align="right"
-          sx={{ flex: 1, fontWeight: 'bold' }}
+          sx={{ flex: 1, fontWeight: 'bold', fontSize: '2rem' }}
         >
           {title}
         </Link>
@@ -54,8 +53,7 @@ export default function Header(props: HeaderProps) {
             key={section.title}
             color="#ffffff"
             noWrap
-            variant="h5"
-            sx={{ px: 2, flexShrink: 0 }}
+            sx={{ px: 2, flexShrink: 0, fontSize: '1.4rem' }}
           >
             {section.title}
           </Link>
