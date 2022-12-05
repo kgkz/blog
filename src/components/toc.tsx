@@ -2,7 +2,6 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 import TocIcon from '@mui/icons-material/Toc'
 import SummarizeIcon from '@mui/icons-material/Summarize'
-import * as cheerio from 'cheerio'
 
 import AnchorLink from './anchorLink'
 
@@ -12,13 +11,13 @@ type TocProps = {
 }
 
 export default function Toc({ contents, description }: TocProps) {
-  // const h1ContentsReg = new RegExp(/^#[^#]/)
-  // const h1Contents = contents ? contents.split(/\r\n|\n/).filter(x => h1ContentsReg.test(x)) : []
+  const h1ContentsReg = new RegExp(/^#[^#]/)
+  const h1Contents = contents ? contents.split(/\r\n|\n/).filter(x => h1ContentsReg.test(x)) : []
 
-  const $ = cheerio.load(contents)
-  const h1Contents = $('h1')
-    .map((_, element) => $(element).text())
-    .get()
+  // const $ = cheerio.load(contents)
+  // const h1Contents = $('h1')
+  //   .map((_, element) => $(element).text())
+  //   .get()
 
   return (
     <Box borderTop={1} borderBottom={1}>
@@ -68,13 +67,12 @@ export default function Toc({ contents, description }: TocProps) {
               my: 2,
               pl: 5,
               '&::before': {
-                content: 'counter(section)',
-                pr: 2,
+                content: `counter(section) '. '`,
               },
             }}
           >
-            <AnchorLink to={{ hash: h1 }} anchor={h1}>
-              {h1}
+            <AnchorLink to={{ hash: h1.slice(2) }} anchor={h1.slice(2)}>
+              {h1.slice(2)}
             </AnchorLink>
           </Box>
         ))}

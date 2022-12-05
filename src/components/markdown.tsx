@@ -3,9 +3,11 @@ import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
-import { Box } from '@mui/system'
+import Box from '@mui/material/Box'
+import Typography from '@mui/material/Typography'
 
 import imageLoader from '../lib/imageLoader'
+import ExternalLink from './externalLink'
 
 type MarkdownProps = {
   readonly markdown: string
@@ -29,7 +31,7 @@ export default function Markdown(props: MarkdownProps) {
               <Box
                 component="code"
                 className={className}
-                style={{ background: '#9E9E9E', color: '#EF5350', padding: 3 }}
+                style={{ background: '#f0f3f3', color: '#333', padding: 5, lineHeight: 1.5 }}
                 {...props}
               >
                 {children}
@@ -57,7 +59,11 @@ export default function Markdown(props: MarkdownProps) {
                 </Box>
               )
             }
-            return <Box component="p">{children}</Box>
+            return (
+              <Typography component="p" variant="body1" {...props}>
+                {children}
+              </Typography>
+            )
           },
           img({ node, className, children, alt, src, ...props }) {
             return (
@@ -72,6 +78,9 @@ export default function Markdown(props: MarkdownProps) {
                 sizes="(max-width: 768px) 100vw,(max-width: 1200px) 50vw,33vw"
               />
             )
+          },
+          a({ node, children, href, title, ...props }) {
+            return <ExternalLink href={href}>{children}</ExternalLink>
           },
         }}
       >

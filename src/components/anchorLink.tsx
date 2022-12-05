@@ -24,9 +24,10 @@ export const AnchorLink = ({ children, to, anchor }: Props) => {
     return () => router.events.off('hashChangeStart', hashChanged)
   }, [anchor])
   return (
-    <NextLink href={to} passHref>
+    // @ts-ignore
+    <Link component={NextLink} href={to} passHref underline="hover">
       {children}
-    </NextLink>
+    </Link>
   )
 }
 

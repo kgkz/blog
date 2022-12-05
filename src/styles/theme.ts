@@ -14,7 +14,7 @@ const theme = createTheme({
     },
   },
   typography: {
-    fontSize: 12,
+    fontSize: 16,
     button: {
       textTransform: 'none',
       fontSize: 12,
