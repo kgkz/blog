@@ -15,6 +15,7 @@ const theme = createTheme({
   },
   typography: {
     fontSize: 16,
+    fontFamily: 'Nota Sans JP, sans-serif',
     button: {
       textTransform: 'none',
       fontSize: 12,

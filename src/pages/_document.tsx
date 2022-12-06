@@ -13,6 +13,10 @@ export default class MyDocument extends Document {
         <Head>
           <meta name="theme-color" content={theme.palette.primary.main} />
           <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons" />
+          <link
+            href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@100&display=swap"
+            rel="stylesheet"
+          ></link>
           {(this.props as any).emotionStyleTags}
           <Script
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
