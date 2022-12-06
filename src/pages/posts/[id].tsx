@@ -8,8 +8,6 @@ import Toc from '../../components/toc'
 import CategoryTags from '../../components/categoryTags'
 import DateTag from '../../components/dateTag'
 import { getDataForLayout } from '../../lib/utils'
-import ParseHTML from '../../components/parseHTML'
-
 import 'highlight.js/styles/tokyo-night-dark.css'
 import Markdown from '../../components/markdown'
 
@@ -89,7 +87,6 @@ export default function PostsId({ blog, blogs, categories, tags, author }: Props
         <Toc contents={blog.body} description={blog.description} />
         <Box component="div">
           <Markdown markdown={blog.body} />
-          {/* <ParseHTML html={blog.body} /> */}
         </Box>
       </>
     </Layout>

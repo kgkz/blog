@@ -14,18 +14,13 @@ export default function Toc({ contents, description }: TocProps) {
   const h1ContentsReg = new RegExp(/^#[^#]/)
   const h1Contents = contents ? contents.split(/\r\n|\n/).filter(x => h1ContentsReg.test(x)) : []
 
-  // const $ = cheerio.load(contents)
-  // const h1Contents = $('h1')
-  //   .map((_, element) => $(element).text())
-  //   .get()
-
   return (
     <Box borderTop={1} borderBottom={1}>
       {description ? (
         <>
           <Box sx={{ display: 'flex', justifyContent: 'left', pt: 5 }}>
-            <SummarizeIcon fontSize="large" />
-            <Typography variant="h5" component={'span'} sx={{ ml: 1, mt: 0.3 }}>
+            <SummarizeIcon sx={{ fontSize: '2rem' }} />
+            <Typography variant="h5" component={'span'} sx={{ ml: 1 }}>
               概要
             </Typography>
           </Box>
@@ -44,8 +39,8 @@ export default function Toc({ contents, description }: TocProps) {
         <></>
       )}
       <Box sx={{ display: 'flex', justifyContent: 'left', mt: 1 }}>
-        <TocIcon fontSize="large" />
-        <Typography variant="h5" component={'span'} sx={{ ml: 1, mt: 0.3 }}>
+        <TocIcon sx={{ fontSize: '2rem' }} />
+        <Typography variant="h5" component={'span'} sx={{ ml: 1 }}>
           目次
         </Typography>
       </Box>

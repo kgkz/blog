@@ -39,7 +39,7 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
   const monthlyIndex = groupByDate(blogs)
   return (
     <>
-      <Box borderBottom={1} borderTop={1} sx={{ mb: 5, py: 2 }}>
+      <Box borderBottom={1} borderTop={1} sx={{ mb: 5, py: 2, pl: 2 }}>
         <Box>
           <Box display={'flex'}>
             <CategoryIcon fontSize="large" />
@@ -51,8 +51,12 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
             {categories ? (
               categories.map((category, index) => {
                 return (
-                  <ListItem key={index}>
-                    <ListItemButton component={NextLink} href={`/categories/${category.id}`}>
+                  <ListItem key={index} sx={{ pl: 0 }}>
+                    <ListItemButton
+                      component={NextLink}
+                      href={`/categories/${category.id}`}
+                      sx={{ pl: 0 }}
+                    >
                       <ListItemIcon sx={{ minWidth: 0 }}>
                         <ChevronRightIcon />
                       </ListItemIcon>
@@ -80,10 +84,10 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
               listStyle: 'none',
               gap: 1.5,
               mt: 2,
-              pl: 4.5,
+              pl: 0,
             }}
           >
-            {tags ? <CategoryTags tags={tags} /> : <></>}
+            {tags ? <CategoryTags tags={tags} fontSize="0.7rem" /> : <></>}
           </Box>
           <Box sx={{ mt: 3 }}>
             <Box display={'flex'}>
@@ -95,8 +99,12 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
             <List>
               {Array.from(monthlyIndex).map(([month, group], index) => {
                 return (
-                  <ListItem key={index}>
-                    <ListItemButton component={NextLink} href={`/archive/${month}`}>
+                  <ListItem key={index} sx={{ pl: 0 }}>
+                    <ListItemButton
+                      component={NextLink}
+                      href={`/archive/${month}`}
+                      sx={{ pl: 0, py: 0 }}
+                    >
                       <ListItemIcon sx={{ minWidth: 0 }}>
                         <ChevronRightIcon />
                       </ListItemIcon>

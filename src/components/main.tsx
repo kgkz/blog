@@ -22,7 +22,7 @@ export default function Main({ blogs }: MainProps) {
     <>
       {blogs.map((blog, index) => {
         return (
-          <Grid item key={index} xs={12} md={6}>
+          <Grid item key={index} xs={12} md={6} width="400">
             <Card>
               <CardActionArea component={NextLink} href={`/posts/${blog.id}`}>
                 <CardMedia
@@ -32,17 +32,15 @@ export default function Main({ blogs }: MainProps) {
                   alt={blog.description}
                 />
                 <CardContent>
-                  <Typography gutterBottom component="div" variant="h5">
-                    {blog.title}
-                  </Typography>
                   <Typography
-                    variant="body2"
+                    variant="subtitle2"
                     sx={{
-                      width: 330,
-                      height: 30,
+                      pl: 2,
+                      width: '100%',
                       overflow: 'hidden',
-                      textOverflow: 'ellipsis',
-                      whiteSpace: 'noWrap',
+                      display: '-webkit-box',
+                      WebkitLineClamp: 2,
+                      WebkitBoxOrient: 'vertical',
                     }}
                   >
                     {blog.description}
@@ -52,18 +50,23 @@ export default function Main({ blogs }: MainProps) {
                       display: 'flex',
                       flexWrap: 'wrap',
                       listStyle: 'none',
-                      gap: 1.5,
+                      gap: 1,
                       mt: 2,
+                      justifyContent: 'right',
                     }}
                   >
-                    {blog.tag.length ? <CategoryTags tags={blog.tag} anker={false} /> : <></>}
+                    {blog.tag.length ? (
+                      <CategoryTags tags={blog.tag} anker={false} fontSize="0.5rem" />
+                    ) : (
+                      <></>
+                    )}
                   </Box>
                   <Box
                     sx={{
                       display: 'flex',
                       justifyContent: 'right',
                       flexWrap: 'wrap',
-                      mt: 2.5,
+                      mt: 2,
                     }}
                   >
                     {blog?.publishedAt ? (

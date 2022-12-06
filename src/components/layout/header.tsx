@@ -25,7 +25,6 @@ export default function Header(props: HeaderProps) {
         src="8cabe2d9091749739606486b6a961cd3/top.JPG"
         alt="top image"
         fill
-        quality={30}
         priority
         style={{ objectFit: 'cover' }}
         sizes="(max-width: 768px) 100vw,

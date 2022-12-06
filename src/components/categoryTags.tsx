@@ -6,9 +6,10 @@ import { Tag } from '../types/apiResponse'
 type CategoryTagsProps = {
   tags: Tag[]
   anker?: boolean
+  fontSize?: string
 }
 
-export default function CategoryTags({ tags, anker = true }: CategoryTagsProps) {
+export default function CategoryTags({ tags, anker = true, fontSize }: CategoryTagsProps) {
   return (
     <>
       {tags.map((tag, index) => {
@@ -23,6 +24,7 @@ export default function CategoryTags({ tags, anker = true }: CategoryTagsProps) 
             variant="outlined"
             clickable
             size="small"
+            sx={{ fontSize: fontSize }}
           />
         )
       })}
