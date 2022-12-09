@@ -1,7 +1,7 @@
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
-import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
-import { atomDark } from 'react-syntax-highlighter/dist/cjs/styles/prism'
+import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter'
+import defaultAtomDark from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark'
 
 import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
@@ -13,10 +13,7 @@ type MarkdownProps = {
   readonly markdown: string
 }
 
-export default function Markdown(props: MarkdownProps) {
-  const { markdown } = props
-  //FIXME:型問題の修正
-  const syntaxTheme: any = atomDark
+export default function Markdown({ markdown }: MarkdownProps) {
   return (
     <>
       <ReactMarkdown
@@ -24,7 +21,12 @@ export default function Markdown(props: MarkdownProps) {
           code({ node, inline, className, children, ...props }) {
             const match = /language-(\w+)/.exec(className || '')
             return !inline && match ? (
-              <SyntaxHighlighter style={syntaxTheme} language={match[1]} PreTag="div" {...props}>
+              <SyntaxHighlighter
+                style={defaultAtomDark as any}
+                language={match[1]}
+                PreTag="div"
+                {...props}
+              >
                 {String(children).replace(/\n$/, '')}
               </SyntaxHighlighter>
             ) : (
