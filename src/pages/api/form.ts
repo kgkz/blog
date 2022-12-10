@@ -3,11 +3,11 @@ import FormData from 'form-data'
 import { NextApiRequest, NextApiResponse } from 'next'
 
 export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-  const body = req.body
+  const body = JSON.parse(req.body)
   if (req.method === 'POST') {
     const formData = new FormData()
     formData.append(process.env.GF_EMAIL, body.email)
-    formData.append(process.env.GF_Name, body.name)
+    formData.append(process.env.GF_NAME, body.name)
     formData.append(process.env.GF_INQUIRY, body.inquiry)
 
     await axios
