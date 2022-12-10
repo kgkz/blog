@@ -19,10 +19,11 @@ export default class MyDocument extends Document {
           ></link>
           {(this.props as any).emotionStyleTags}
           <Script
+            defer
             src={`https://www.googletagmanager.com/gtag/js?id=${GA_ID}`}
             strategy="afterInteractive"
           />
-          <Script id="google-analytics" strategy="afterInteractive">
+          <Script id="google-analytics" defer strategy="afterInteractive">
             {`
           window.dataLayer = window.dataLayer || [];
           function gtag(){window.dataLayer.push(arguments);}

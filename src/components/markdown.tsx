@@ -1,6 +1,13 @@
 import Image from 'next/image'
 import ReactMarkdown from 'react-markdown'
-import { PrismAsyncLight as SyntaxHighlighter } from 'react-syntax-highlighter'
+import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
+import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
+import ts from 'react-syntax-highlighter/dist/cjs/languages/prism/typescript'
+import jsx from 'react-syntax-highlighter/dist/cjs/languages/prism/jsx'
+import tsx from 'react-syntax-highlighter/dist/cjs/languages/prism/tsx'
+import css from 'react-syntax-highlighter/dist/cjs/languages/prism/css'
+import json from 'react-syntax-highlighter/dist/cjs/languages/prism/json'
+import bash from 'react-syntax-highlighter/dist/cjs/languages/prism/bash'
 import defaultAtomDark from 'react-syntax-highlighter/dist/cjs/styles/prism/atom-dark'
 
 import Box from '@mui/material/Box'
@@ -12,6 +19,14 @@ import ExternalLink from './externalLink'
 type MarkdownProps = {
   readonly markdown: string
 }
+
+SyntaxHighlighter.registerLanguage('js', js)
+SyntaxHighlighter.registerLanguage('ts', ts)
+SyntaxHighlighter.registerLanguage('jsx', jsx)
+SyntaxHighlighter.registerLanguage('tsx', tsx)
+SyntaxHighlighter.registerLanguage('css', css)
+SyntaxHighlighter.registerLanguage('json', json)
+SyntaxHighlighter.registerLanguage('bash', bash)
 
 export default function Markdown({ markdown }: MarkdownProps) {
   return (
