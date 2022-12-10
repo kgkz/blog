@@ -32,6 +32,9 @@ const sections = [
   },
 ]
 
+const baseDescription =
+  'エンジニアの暗号を紐解くサイト『で・くりぷと』。Web開発,暗号資産,仮想通貨,Crypto Currency,Blockchain,NFT,脱SIer術,AIに関する情報をわかりやすく丁寧に解説することを目標にしています。'
+
 export default function Layout({
   children,
   blog,
@@ -46,8 +49,11 @@ export default function Layout({
     <>
       <Head>
         <meta name="viewport" content="initial-scale=1, width=device-width" />
-        <meta name="description" content={blog?.description} />
-        <title>{blog?.title}</title>
+        <meta
+          name="description"
+          content={blog?.description ? `${blog.description}-${baseDescription}` : baseDescription}
+        />
+        <title>{blog?.title ? `${blog?.title} で・くりぷと` : 'で・くりぷと'}</title>
       </Head>
       <Container maxWidth="lg">
         <Header title="で・くりぷと" sections={sections} />
