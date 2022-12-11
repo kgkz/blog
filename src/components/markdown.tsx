@@ -1,4 +1,4 @@
-import Image from 'next/image'
+import dynamic from 'next/dynamic'
 import ReactMarkdown from 'react-markdown'
 import { PrismLight as SyntaxHighlighter } from 'react-syntax-highlighter'
 import js from 'react-syntax-highlighter/dist/cjs/languages/prism/javascript'
@@ -14,7 +14,9 @@ import Box from '@mui/material/Box'
 import Typography from '@mui/material/Typography'
 
 import imageLoader from '../lib/imageLoader'
-import ExternalLink from './externalLink'
+
+const Image = dynamic(() => import('next/image'))
+const ExternalLink = dynamic(() => import('./externalLink'))
 
 type MarkdownProps = {
   readonly markdown: string

@@ -1,5 +1,6 @@
 import NextLink from 'next/link'
 import Image from 'next/image'
+import dynamic from 'next/dynamic'
 
 import Typography from '@mui/material/Typography'
 import Box from '@mui/material/Box'
@@ -24,7 +25,6 @@ import GitHubIcon from '@mui/icons-material/GitHub'
 import { groupByDate } from '../lib/utils'
 import { Author, Blog, Category, Tag } from '../types/apiResponse'
 import CategoryTags from './categoryTags'
-import Toc from './toc'
 import imageLoader from '../lib/imageLoader'
 
 type SidebarProps = {
@@ -34,6 +34,8 @@ type SidebarProps = {
   author?: Author
   contents?: string
 }
+
+const Toc = dynamic(() => import('./toc'))
 
 export default function Sidebar({ blogs, categories, tags, author, contents }: SidebarProps) {
   const monthlyIndex = groupByDate(blogs)

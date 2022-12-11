@@ -1,14 +1,13 @@
-import {
-  Typography,
-  Grid,
-  Card,
-  CardActionArea,
-  CardContent,
-  CardMedia,
-  Box,
-  Link,
-} from '@mui/material'
 import NextLink from 'next/link'
+
+import Typography from '@mui/material/Typography'
+import Grid from '@mui/material/Grid'
+import Card from '@mui/material/Card'
+import CardActionArea from '@mui/material/CardActionArea'
+import CardContent from '@mui/material/CardContent'
+import CardMedia from '@mui/material/CardMedia'
+import Box from '@mui/material/Box'
+
 import { Blog } from '../types/apiResponse'
 import CategoryTags from './categoryTags'
 import DateTag from './dateTag'
