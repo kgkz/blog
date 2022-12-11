@@ -14,7 +14,6 @@ type FormInput = {
 export default function Form() {
   const {
     control,
-    register,
     handleSubmit,
     formState: { errors, isDirty, isValid, isSubmitting, isSubmitSuccessful, isSubmitted },
   } = useForm<FormInput>({ mode: 'onBlur' })
