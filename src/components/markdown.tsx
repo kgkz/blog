@@ -55,6 +55,13 @@ export default function Markdown({ markdown }: MarkdownProps) {
               </Box>
             )
           },
+          blockquote({ children }) {
+            return (
+              <Box component="blockquote" sx={{ borderLeft: 3, pl: 2 }}>
+                {children}
+              </Box>
+            )
+          },
           h1({ children, ...props }) {
             return (
               <Box component="h1" id={`${children}`}>
