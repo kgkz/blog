@@ -75,7 +75,7 @@ export default function Markdown({ markdown }: MarkdownProps) {
                 component="h2"
                 variant="h2"
                 id={`${children}`}
-                sx={{ borderBottom: 2, borderBottomColor: '#5c93bb2b' }}
+                sx={{ borderBottom: 2, borderBottomColor: '#5c93bb2b', mt: 5 }}
               >
                 {children}
               </Typography>
@@ -87,7 +87,12 @@ export default function Markdown({ markdown }: MarkdownProps) {
                 component="h3"
                 variant="h3"
                 id={`${children}`}
-                sx={{ borderBottom: 1, borderBottomColor: '#5c93bb2b', display: 'inline-block' }}
+                sx={{
+                  borderBottom: 1,
+                  borderBottomColor: '#5c93bb2b',
+                  display: 'inline-block',
+                  mt: 2,
+                }}
               >
                 {children}
               </Typography>
@@ -95,7 +100,7 @@ export default function Markdown({ markdown }: MarkdownProps) {
           },
           h4({ children, ...props }) {
             return (
-              <Typography component="h4" variant="h4" id={`${children}`}>
+              <Typography component="h4" variant="h4" id={`${children}`} sx={{ mt: 1 }}>
                 {children}
               </Typography>
             )

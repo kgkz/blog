@@ -29,7 +29,7 @@ const theme = createTheme({
       letterSpacing: '-0.03em',
     },
     h3: {
-      fontSize: '1.5rem',
+      fontSize: '1.4rem',
       fontWeight: 500,
       lineHeight: 2,
       letterSpacing: '-0.025em',
