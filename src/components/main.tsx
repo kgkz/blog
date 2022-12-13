@@ -24,6 +24,7 @@ export default function Main({ blogs }: MainProps) {
           <Grid item key={index} xs={12} md={6} width="400">
             <Card>
               <CardActionArea component={NextLink} href={`/posts/${blog.id}`}>
+                {/* TODO: Imageコンポーネントへの変更 */}
                 <CardMedia
                   component="img"
                   sx={{ height: 200, boarderRadius: 40 }}
@@ -32,7 +33,6 @@ export default function Main({ blogs }: MainProps) {
                 />
                 <CardContent>
                   <Typography
-                    variant="subtitle2"
                     sx={{
                       pl: 2,
                       width: '100%',
@@ -55,7 +55,7 @@ export default function Main({ blogs }: MainProps) {
                     }}
                   >
                     {blog.tag.length ? (
-                      <CategoryTags tags={blog.tag} anker={false} fontSize="0.5rem" />
+                      <CategoryTags tags={blog.tag} anker={false} fontSize="0.8rem" />
                     ) : (
                       <></>
                     )}

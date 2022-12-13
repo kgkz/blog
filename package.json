@@ -40,7 +40,8 @@
     "react-dom": "^18.2.0",
     "react-hook-form": "^7.39.4",
     "react-markdown": "^8.0.3",
-    "react-syntax-highlighter": "15.5.0"
+    "react-syntax-highlighter": "15.5.0",
+    "tocbot": "^4.19.0"
   },
   "devDependencies": {
     "@next/bundle-analyzer": "^13.0.6",

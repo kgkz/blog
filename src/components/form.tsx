@@ -24,7 +24,7 @@ export default function Form() {
     if (!isSubmitted) {
       return (
         <Stack component="form" spacing={2} onSubmit={handleSubmit(onSubmit)}>
-          <Typography variant="h4" component="h2" align="center" gutterBottom>
+          <Typography component="h1" variant="h1" align="center" gutterBottom>
             Contact Form
           </Typography>
           <Controller
@@ -101,13 +101,7 @@ export default function Form() {
       )
     } else {
       return (
-        <Typography
-          variant="h4"
-          component="h2"
-          align="center"
-          gutterBottom
-          sx={{ whiteSpace: 'pre-wrap' }}
-        >
+        <Typography align="center" gutterBottom sx={{ whiteSpace: 'pre-wrap' }}>
           {isSubmitSuccessful
             ? `お問い合わせありがとうございます。
           順次お返しいたしますので少々お待ちください。`

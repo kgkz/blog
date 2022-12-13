@@ -4,12 +4,12 @@ import Typography from '@mui/material/Typography'
 
 import { apiClient } from '../../lib/api-client'
 import Layout from '../../components/layout/layout'
-import Toc from '../../components/toc'
 import CategoryTags from '../../components/categoryTags'
 import DateTag from '../../components/dateTag'
 import { getDataForLayout } from '../../lib/utils'
 import 'highlight.js/styles/tokyo-night-dark.css'
 import Markdown from '../../components/markdown'
+import Toc from '../../components/toc'
 
 type Props = InferGetStaticPropsType<typeof getStaticProps> & { errors?: string }
 
@@ -58,12 +58,10 @@ export default function PostsId({ blog, blogs, categories, tags, author }: Props
       contents={blog.body}
       author={author}
     >
-      <>
-        <Box sx={{ display: 'flex', justifyContent: 'center' }}>
-          <Typography variant="h4" sx={{ fontWeight: 500 }}>
-            {blog.title}
-          </Typography>
-        </Box>
+      <Box component="article">
+        <Typography component="h1" variant="h1">
+          {blog.title}
+        </Typography>
         <Box
           sx={{
             display: 'flex',
@@ -78,17 +76,19 @@ export default function PostsId({ blog, blogs, categories, tags, author }: Props
           {blog.publishedAt ? <DateTag date={blog.publishedAt} icon="create" /> : <></>}
           {blog.updatedAt ? <DateTag date={blog.updatedAt} icon="update" /> : <></>}
         </Box>
+        {/* TODO: Imageコンポーネントへの変更 */}
         <Box
           component="img"
           sx={{ width: '100%', height: 'auto', borderRadius: 4, mb: 1 }}
           alt={blog.description}
           src={`${blog.ogimage?.url}?txt=${blog.title}&txt-size=50&txt-pad=50&txt-align=bottom,right&txt-fit=max&txtfont=Hiragino%20Sans%20W3`}
         />
-        <Toc contents={blog.body} description={blog.description} />
-        <Box component="div">
+        {/* <Toc contents={blog.body} description={blog.description} /> */}
+        <Toc />
+        <Box className="postsContent" sx={{ textAlign: 'justify' }}>
           <Markdown markdown={blog.body} />
         </Box>
-      </>
+      </Box>
     </Layout>
   )
 }

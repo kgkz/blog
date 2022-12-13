@@ -35,8 +35,6 @@ type SidebarProps = {
   contents?: string
 }
 
-const Toc = dynamic(() => import('./toc'))
-
 export default function Sidebar({ blogs, categories, tags, author, contents }: SidebarProps) {
   const monthlyIndex = groupByDate(blogs)
   return (
@@ -45,7 +43,7 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
         <Box>
           <Box display={'flex'}>
             <CategoryIcon fontSize="large" />
-            <Typography variant="h6" color="action" sx={{ mt: 0.4, ml: 0.5 }}>
+            <Typography color="action" sx={{ mt: 0.4, ml: 0.5 }}>
               Category
             </Typography>
           </Box>
@@ -75,7 +73,7 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
         <Box>
           <Box display={'flex'}>
             <LocalOfferIcon fontSize="large" />
-            <Typography variant="h6" color="action" sx={{ mt: 0.3, ml: 0.5 }}>
+            <Typography color="action" sx={{ mt: 0.3, ml: 0.5 }}>
               Tag
             </Typography>
           </Box>
@@ -89,12 +87,12 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
               pl: 0,
             }}
           >
-            {tags ? <CategoryTags tags={tags} fontSize="0.7rem" /> : <></>}
+            {tags ? <CategoryTags tags={tags} fontSize="1rem" /> : <></>}
           </Box>
           <Box sx={{ mt: 3 }}>
             <Box display={'flex'}>
               <CalendarMonthIcon fontSize="large" />
-              <Typography variant="h6" color="action" sx={{ mt: 0.6, ml: 0.5 }}>
+              <Typography color="action" sx={{ mt: 0.6, ml: 0.5 }}>
                 Archive
               </Typography>
             </Box>
@@ -136,10 +134,10 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
             />
           </CardMedia>
           <CardContent>
-            <Typography gutterBottom variant="h5" component="div" sx={{ textAlign: 'center' }}>
+            <Typography gutterBottom sx={{ textAlign: 'center' }}>
               {author.name}
             </Typography>
-            <Typography variant="body2" color="text.secondary">
+            <Typography color="text.secondary" variant="caption">
               {author.text}
             </Typography>
           </CardContent>
@@ -166,13 +164,6 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
             </Box>
           </CardActions>
         </Card>
-      ) : (
-        <></>
-      )}
-      {contents ? (
-        <Box display={{ xs: 'none', md: 'block' }} sx={{ position: 'sticky', top: 50, mt: 5 }}>
-          <Toc contents={contents} />
-        </Box>
       ) : (
         <></>
       )}

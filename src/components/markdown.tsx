@@ -57,16 +57,30 @@ export default function Markdown({ markdown }: MarkdownProps) {
           },
           blockquote({ children }) {
             return (
-              <Box component="blockquote" sx={{ borderLeft: 3, pl: 2 }}>
+              <Typography component="blockquote" variant="body1" sx={{ borderLeft: 3, pl: 2 }}>
                 {children}
-              </Box>
+              </Typography>
             )
           },
           h1({ children, ...props }) {
             return (
-              <Box component="h1" id={`${children}`}>
+              <Typography component="h1" variant="h1" id={`${children}`}>
                 {children}
-              </Box>
+              </Typography>
+            )
+          },
+          h2({ children, ...props }) {
+            return (
+              <Typography component="h2" variant="h2" id={`${children}`}>
+                {children}
+              </Typography>
+            )
+          },
+          h3({ children, ...props }) {
+            return (
+              <Typography component="h3" variant="h3" id={`${children}`}>
+                {children}
+              </Typography>
             )
           },
           p({ node, children, ...props }) {
@@ -84,7 +98,7 @@ export default function Markdown({ markdown }: MarkdownProps) {
               )
             }
             return (
-              <Typography component="p" variant="body1" {...props}>
+              <Typography component="p" variant="body1">
                 {children}
               </Typography>
             )

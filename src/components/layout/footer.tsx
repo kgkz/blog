@@ -5,36 +5,25 @@ import NextLink from 'next/link'
 
 type FooterProps = {}
 
-function Copyright() {
-  return (
-    <Typography variant="caption" color="text.secondary">
-      Copyright © kgkz
-    </Typography>
-  )
-}
-
 export default function Footer({}: FooterProps) {
   return (
-    <Box
+    <Typography
       component="footer"
+      variant="caption"
       sx={{
         bgcolor: 'bacaground.paper',
         py: 6,
         textAlign: 'center',
       }}
     >
-      <Link
-        href="/privacy"
-        component={NextLink}
-        variant="caption"
-        color="text.secondary"
-        underline="hover"
-      >
+      <Link href="/privacy" component={NextLink} color="text.secondary" underline="hover">
         プライバシーポリシー
       </Link>
       <Box sx={{ mt: 0.5 }}>
-        <Copyright />
+        <Typography variant="caption" color="text.secondary">
+          Copyright © kgkz
+        </Typography>
       </Box>
-    </Box>
+    </Typography>
   )
 }
