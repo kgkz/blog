@@ -71,14 +71,31 @@ export default function Markdown({ markdown }: MarkdownProps) {
           },
           h2({ children, ...props }) {
             return (
-              <Typography component="h2" variant="h2" id={`${children}`}>
+              <Typography
+                component="h2"
+                variant="h2"
+                id={`${children}`}
+                sx={{ borderBottom: 2, borderBottomColor: '#5c93bb2b' }}
+              >
                 {children}
               </Typography>
             )
           },
           h3({ children, ...props }) {
             return (
-              <Typography component="h3" variant="h3" id={`${children}`}>
+              <Typography
+                component="h3"
+                variant="h3"
+                id={`${children}`}
+                sx={{ borderBottom: 1, borderBottomColor: '#5c93bb2b', display: 'inline-block' }}
+              >
+                {children}
+              </Typography>
+            )
+          },
+          h4({ children, ...props }) {
+            return (
+              <Typography component="h4" variant="h4" id={`${children}`}>
                 {children}
               </Typography>
             )

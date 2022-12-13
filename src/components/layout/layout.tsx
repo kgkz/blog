@@ -58,20 +58,22 @@ export default function Layout({
       <Container maxWidth="lg">
         <Header title="で・くりぷと" sections={sections} />
         <Breadcrumbs blog={blog} blogs={blogs} currentTag={currentTag} />
-        <Grid component="main" container spacing={6} sx={{ pt: 2 }}>
-          <Grid item xs={12} md={9}>
-            {children}
+        <Box sx={{ my: 5 }}>
+          <Grid component="main" container spacing={6}>
+            <Grid item xs={12} md={9}>
+              {children}
+            </Grid>
+            <Grid item xs={12} md={3}>
+              <Sidebar
+                blogs={blogs}
+                categories={categories}
+                tags={tags}
+                author={author}
+                contents={contents}
+              />
+            </Grid>
           </Grid>
-          <Grid item xs={12} md={3}>
-            <Sidebar
-              blogs={blogs}
-              categories={categories}
-              tags={tags}
-              author={author}
-              contents={contents}
-            />
-          </Grid>
-        </Grid>
+        </Box>
         <Footer />
       </Container>
     </>

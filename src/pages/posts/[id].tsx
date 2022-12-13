@@ -83,7 +83,6 @@ export default function PostsId({ blog, blogs, categories, tags, author }: Props
           alt={blog.description}
           src={`${blog.ogimage?.url}?txt=${blog.title}&txt-size=50&txt-pad=50&txt-align=bottom,right&txt-fit=max&txtfont=Hiragino%20Sans%20W3`}
         />
-        {/* <Toc contents={blog.body} description={blog.description} /> */}
         <Toc />
         <Box className="postsContent" sx={{ textAlign: 'justify' }}>
           <Markdown markdown={blog.body} />

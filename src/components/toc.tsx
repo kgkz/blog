@@ -10,7 +10,7 @@ export default function Toc() {
     tocbot.init({
       tocSelector: '.toc',
       contentSelector: '.postsContent',
-      headingSelector: 'h2, h3',
+      headingSelector: 'h2, h3, h4',
       collapseDepth: 0,
       hasInnerContainers: false,
       linkClass: 'MuiLink-root',
@@ -21,7 +21,7 @@ export default function Toc() {
   }, [])
 
   return (
-    <Paper variant="outlined" elevation={24} sx={{ p: 2, my: 3 }}>
+    <Paper elevation={2} sx={{ p: 2, my: 3 }}>
       <Box sx={{ display: 'flex', justifyContent: 'left', mt: 1 }}>
         <TocIcon sx={{ fontSize: '2.5rem' }} />
         <Typography sx={{ ml: 1, fontSize: '1.5rem' }}>目次</Typography>

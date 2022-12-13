@@ -19,20 +19,26 @@ const theme = createTheme({
     h1: {
       fontSize: '2rem',
       fontWeight: 500,
-      lineHeight: 2,
+      lineHeight: 4,
       letterSpacing: '-0.035em',
     },
     h2: {
       fontSize: '1.75rem',
       fontWeight: 500,
-      lineHeight: 3,
+      lineHeight: 2,
       letterSpacing: '-0.03em',
     },
     h3: {
       fontSize: '1.5rem',
       fontWeight: 500,
-      lineHeight: 1.5,
+      lineHeight: 2,
       letterSpacing: '-0.025em',
+    },
+    h4: {
+      fontSize: '1.25rem',
+      fontWeight: 600,
+      lineHeight: 2,
+      letterSpacing: '-0.020em',
     },
     body1: {
       lineHeight: 1.7,

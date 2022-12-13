@@ -28,7 +28,7 @@ export default function Main({ blogs }: MainProps) {
                 <CardMedia
                   component="img"
                   sx={{ height: 200, boarderRadius: 40 }}
-                  src={`${blog.ogimage?.url}?txt=${blog.title}&txt-size=50&txt-pad=50&txt-align=bottom,right&txt-fit=max&txtfont=Hiragino%20Sans%20W3`}
+                  src={`${blog.ogimage?.url}?txt=${blog.title}&txt-size=30&txt-pad=100&txt-align=bottom,right&txt-fit=max&txtfont=Hiragino%20Sans%20W3`}
                   alt={blog.description}
                 />
                 <CardContent>
