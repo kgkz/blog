@@ -1,0 +1,9 @@
+# *
+User-agent: *
+Allow: /
+
+# Host
+Host: https://de-crypto.tech
+
+# Sitemaps
+Sitemap: https://de-crypto.tech/sitemap.xml
