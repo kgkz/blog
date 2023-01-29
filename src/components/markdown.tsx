@@ -15,9 +15,12 @@ import Typography from '@mui/material/Typography'
 
 import imageLoader from '../lib/imageLoader'
 import ExternalLink from './externalLink'
+import OgpLink from './ogpLink'
+import { LinkContent } from '../types/apiResponse'
 
 type MarkdownProps = {
   readonly markdown: string
+  readonly linkContents?: LinkContent[]
 }
 
 SyntaxHighlighter.registerLanguage('js', js)
@@ -28,7 +31,7 @@ SyntaxHighlighter.registerLanguage('css', css)
 SyntaxHighlighter.registerLanguage('json', json)
 SyntaxHighlighter.registerLanguage('bash', bash)
 
-export default function Markdown({ markdown }: MarkdownProps) {
+export default function Markdown({ markdown, linkContents }: MarkdownProps) {
   return (
     <>
       <ReactMarkdown
@@ -109,6 +112,9 @@ export default function Markdown({ markdown }: MarkdownProps) {
             const hasImg = node.children.some(child => {
               return child.type === 'element' && child.tagName === 'img'
             })
+            const hasLink = node.children.some(child => {
+              return child.type === 'text' && new RegExp(/^https:/).test(child.value)
+            })
             if (hasImg) {
               return (
                 <Box
@@ -119,6 +125,12 @@ export default function Markdown({ markdown }: MarkdownProps) {
                 </Box>
               )
             }
+            if (hasLink) {
+              const text = node.children[0].type === 'text' ? node.children[0].value : ''
+              const linkContent = linkContents?.find(linkContent => linkContent.url === text)
+              return <OgpLink linkContent={linkContent} />
+            }
+
             return (
               <Typography component="p" variant="body1">
                 {children}
@@ -129,7 +141,7 @@ export default function Markdown({ markdown }: MarkdownProps) {
             return (
               <Image
                 loader={imageLoader}
-                src={`${src?.split('/')[5]}/${src?.split('/')[6]}` || ''}
+                src={src || ''}
                 fill
                 alt={alt || ''}
                 quality={75}

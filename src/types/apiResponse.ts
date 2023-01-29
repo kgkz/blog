@@ -49,3 +49,10 @@ export type MetaData = {
   offset: number
   limit: number
 }
+
+export type LinkContent = {
+  title?: string
+  url?: string
+  image?: string
+  description?: string
+}

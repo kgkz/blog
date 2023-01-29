@@ -45,7 +45,7 @@ const theme = createTheme({
       letterSpacing: '0.05em',
     },
     caption: {
-      fontSize: '0.85rem',
+      fontSize: '0.6rem',
     },
     button: {
       textTransform: 'none',

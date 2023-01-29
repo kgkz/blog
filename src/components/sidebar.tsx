@@ -122,7 +122,7 @@ export default function Sidebar({ blogs, categories, tags, author, contents }: S
           <CardMedia sx={{ position: 'relative', overflow: 'hidden', height: '10rem' }}>
             <Image
               alt="my profile image"
-              src={`${author.image.url.split('/')[5]}/${author.image.url.split('/')[6]}`}
+              src={author.image.url}
               loader={imageLoader}
               fill
               quality={30}

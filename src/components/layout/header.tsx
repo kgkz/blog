@@ -22,7 +22,8 @@ export default function Header(props: HeaderProps) {
     <Box component="header" sx={{ position: 'relative', overflow: 'hidden', height: 500 }}>
       <Image
         loader={imageLoader}
-        src="8cabe2d9091749739606486b6a961cd3/top.JPG"
+        src="https://images.microcms-assets.io/assets/b6ac4a8d91df49e5bf670c6085140d55/8cabe2d9091749739606486b6a961cd3/top.JPG"
+        quality={100}
         alt="top image"
         fill
         priority
